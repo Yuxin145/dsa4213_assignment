@@ -1,0 +1,140 @@
+{
+  "model": "interpolated_trigram",
+  "lambdas": [
+    0.25,
+    0.45,
+    0.25,
+    0.05
+  ],
+  "grid_search": {
+    "best_lambdas": [
+      0.25,
+      0.45,
+      0.25,
+      0.05
+    ],
+    "best_val_ce": 5.5761925717467715,
+    "n_grid": 1771,
+    "top10": [
+      {
+        "lambdas": [
+          0.25,
+          0.45,
+          0.25,
+          0.05
+        ],
+        "val_ce": 5.5761925717467715
+      },
+      {
+        "lambdas": [
+          0.3,
+          0.4,
+          0.25,
+          0.05
+        ],
+        "val_ce": 5.578440991343258
+      },
+      {
+        "lambdas": [
+          0.25,
+          0.5,
+          0.2,
+          0.05
+        ],
+        "val_ce": 5.579086743056056
+      },
+      {
+        "lambdas": [
+          0.2,
+          0.5,
+          0.25,
+          0.05
+        ],
+        "val_ce": 5.579226978401604
+      },
+      {
+        "lambdas": [
+          0.3,
+          0.45,
+          0.2,
+          0.05
+        ],
+        "val_ce": 5.5793035403577
+      },
+      {
+        "lambdas": [
+          0.25,
+          0.4,
+          0.3,
+          0.05
+        ],
+        "val_ce": 5.582048975539116
+      },
+      {
+        "lambdas": [
+          0.25,
+          0.45,
+          0.3,
+          0.0
+        ],
+        "val_ce": 5.5823038571339625
+      },
+      {
+        "lambdas": [
+          0.2,
+          0.45,
+          0.3,
+          0.05
+        ],
+        "val_ce": 5.583193116309588
+      },
+      {
+        "lambdas": [
+          0.2,
+          0.55,
+          0.2,
+          0.05
+        ],
+        "val_ce": 5.583654059190837
+      },
+      {
+        "lambdas": [
+          0.3,
+          0.4,
+          0.3,
+          0.0
+        ],
+        "val_ce": 5.583992363797672
+      }
+    ]
+  },
+  "fit_time_s": 42.06978539999909,
+  "lambda_search_time_s": 19.094579199998407,
+  "final": {
+    "val": {
+      "nll_sum": 1206386.9581270711,
+      "count": 216346,
+      "ce": 5.576192571746513,
+      "ppl": 264.06428353564564
+    },
+    "test": {
+      "nll_sum": 1346551.706352383,
+      "count": 244101,
+      "ce": 5.516371118317347,
+      "ppl": 248.73078288415786
+    }
+  },
+  "n_bigram_contexts": 28912,
+  "n_trigram_contexts": 586138,
+  "n_stored_counts": 1993038,
+  "manifest": {
+    "start": "2026-10-10T23:31:51",
+    "end": "2026-10-10T23:33:22",
+    "git_commit": "no-commit-dirty",
+    "config_hash": "152fa2297aed2ef5",
+    "seed": null,
+    "hardware": "Windows 11; CPU: Intel64 Family 6 Model 186 Stepping 2, GenuineIntel; torch 2.14.1+cu132; GPU available: NVIDIA GeForce RTX 3050 4GB Laptop GPU (not used)",
+    "log_file": "results/part1/ngram/log.txt",
+    "vocab_sha256": "86014eda035ebfe9d43635c0a277dbe0f506b553b1c66b3711bdab20f47b153f"
+  }
+}

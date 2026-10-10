@@ -1,0 +1,16 @@
+[2026-10-10T23:09:51] run_all stage=profile smoke=False device=cuda python=D:\anaconda3\envs\dsa4213\python.exe
+[2026-10-10T23:12:33] profile rnn: {'epoch_time_s': 110.27953560000242, 'train_time_s': 105.64505619999909, 'peak_mem_mb': 1780.5419921875, 'micro_batch': 32, 'steps': 507, 'train_loss': 7.11641272699382, 'val_loss': 6.599160351069583, 'skipped_steps': 0}
+[2026-10-10T23:14:51] profile lstm: {'epoch_time_s': 130.9824860000008, 'train_time_s': 125.42752909999763, 'peak_mem_mb': 1803.81689453125, 'micro_batch': 32, 'steps': 507, 'train_loss': 7.103844407195536, 'val_loss': 6.542401389874322, 'skipped_steps': 0}
+[2026-10-10T23:17:25] profile transformer: {'epoch_time_s': 145.05231170000116, 'train_time_s': 138.120302299998, 'peak_mem_mb': 1884.52099609375, 'micro_batch': 32, 'steps': 507, 'train_loss': 7.0833402070352625, 'val_loss': 6.046908059745731, 'skipped_steps': 0}
+[2026-10-10T23:17:25] run_all finished
+[2026-10-10T23:31:51] run_all stage=ngram smoke=False device=cuda python=D:\anaconda3\envs\dsa4213\python.exe
+[2026-10-10T23:33:23] run_all finished
+[2026-10-11T00:22:41] run_all stage=speedcheck smoke=False device=cuda python=D:\anaconda3\envs\dsa4213\python.exe
+[2026-10-11T00:23:11] speedcheck: rnn 47 s/epoch, lstm 58 s/epoch, transformer 66 s/epoch | projected full runs (all 15 LM runs): 12 ep -> 3.0 h, 18 ep -> 4.5 h, 25 ep -> 6.3 h, 40 ep -> 10.0 h
+[2026-10-11T00:23:11] budget: 7.07 h left after sweep (0.93 h); typical (15 epochs) 3.8 h, worst (max_epochs=25) 6.3 h -> WITHIN BUDGET: start the full runs
+[2026-10-11T00:23:11] run_all finished
+[2026-10-11T03:08:24] run_all stage=profile smoke=False device=cuda python=D:\anaconda3\envs\dsa4213\python.exe
+[2026-10-11T03:09:26] profile rnn: {'epoch_time_s': 49.19884699999966, 'train_time_s': 47.27073989999917, 'peak_mem_mb': 1780.5419921875, 'micro_batch': 32, 'steps': 507, 'train_loss': 7.11641272699382, 'val_loss': 6.599160351069583, 'skipped_steps': 0}
+[2026-10-11T03:10:25] profile lstm: {'epoch_time_s': 55.89562499999738, 'train_time_s': 53.646748500003014, 'peak_mem_mb': 1803.81689453125, 'micro_batch': 32, 'steps': 507, 'train_loss': 7.103844407195536, 'val_loss': 6.542401389874322, 'skipped_steps': 0}
+[2026-10-11T03:11:22] profile transformer: {'epoch_time_s': 54.61351750000176, 'train_time_s': 52.68480329999875, 'peak_mem_mb': 1884.52099609375, 'micro_batch': 32, 'steps': 507, 'train_loss': 7.083338945209898, 'val_loss': 6.046674601246383, 'skipped_steps': 0}
+[2026-10-11T03:11:22] run_all finished

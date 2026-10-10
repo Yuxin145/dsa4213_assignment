@@ -1,0 +1,29 @@
+{
+  "device": "cuda",
+  "time": "2026-10-11T00:22:51",
+  "per_arch": {
+    "rnn": {
+      "s_per_step": 0.09326712749998478,
+      "train_s_per_epoch": 47.286433642492284
+    },
+    "lstm": {
+      "s_per_step": 0.11404190249995735,
+      "train_s_per_epoch": 57.81924456747838
+    },
+    "transformer": {
+      "s_per_step": 0.13018258500005686,
+      "train_s_per_epoch": 66.00257059502883
+    }
+  },
+  "projected_full_runs_h": {
+    "12_epochs_per_run": 3.010840748369541,
+    "18_epochs_per_run": 4.516261122554311,
+    "25_epochs_per_run": 6.2725848924365435,
+    "40_epochs_per_run": 10.03613582789847
+  },
+  "sweep_hours_spent": 0.9319445091944433,
+  "typical_h": 3.7635509354619257,
+  "worst_h": 6.2725848924365435,
+  "budget_left_h": 7.068055490805556,
+  "within_budget": true
+}

@@ -1,0 +1,32 @@
+{
+  "rnn": {
+    "epoch_time_s": 110.27953560000242,
+    "train_time_s": 105.64505619999909,
+    "peak_mem_mb": 1780.5419921875,
+    "micro_batch": 32,
+    "steps": 507,
+    "train_loss": 7.11641272699382,
+    "val_loss": 6.599160351069583,
+    "skipped_steps": 0
+  },
+  "lstm": {
+    "epoch_time_s": 130.9824860000008,
+    "train_time_s": 125.42752909999763,
+    "peak_mem_mb": 1803.81689453125,
+    "micro_batch": 32,
+    "steps": 507,
+    "train_loss": 7.103844407195536,
+    "val_loss": 6.542401389874322,
+    "skipped_steps": 0
+  },
+  "transformer": {
+    "epoch_time_s": 145.05231170000116,
+    "train_time_s": 138.120302299998,
+    "peak_mem_mb": 1884.52099609375,
+    "micro_batch": 32,
+    "steps": 507,
+    "train_loss": 7.0833402070352625,
+    "val_loss": 6.046908059745731,
+    "skipped_steps": 0
+  }
+}

@@ -1,0 +1,4 @@
+[2026-10-11T00:40:01] word2vec trained in 403.1s on 2075677 tokens; 28912 vectors -> D:\Users\peter\Desktop\dsa4213_a1\results\part2\embeddings\word2vec.kv
+[2026-10-11T00:40:02] own_frozen: type coverage 1.0000, token coverage 1.0000, missing 0 (random 0, unk_init source_vector)
+[2026-10-11T00:40:02] GloVe loaded via gensim.downloader 'glove-wiki-gigaword-100' from C:\Users\peter/gensim-data\glove-wiki-gigaword-100\glove-wiki-gigaword-100.gz: 400000 vectors, dim 100
+[2026-10-11T00:40:04] glove_frozen: type coverage 0.9618, token coverage 0.9474, missing 1103 (random 1102, unk_init mean_of_covered)

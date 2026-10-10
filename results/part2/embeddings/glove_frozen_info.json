@@ -1,0 +1,146 @@
+{
+  "kind": "glove_frozen",
+  "vocab_sha256": "86014eda035ebfe9d43635c0a277dbe0f506b553b1c66b3711bdab20f47b153f",
+  "matrix_path": "D:\\Users\\peter\\Desktop\\dsa4213_a1\\results\\part2\\embeddings\\glove_frozen_matrix.pt",
+  "matrix_sha256": "3e62a1fe8b1b66351d2a2333703a1d94ab8f8fda477e2441eab50d85007bacc8",
+  "coverage": {
+    "types_total": 28912,
+    "types_covered": 27809,
+    "type_coverage": 0.961849750968456,
+    "train_tokens_total": 2075677,
+    "train_tokens_covered": 1966493,
+    "token_coverage": 0.9473983668942711,
+    "missing_types": 1103,
+    "missing_random_init": 1102,
+    "unk_covered": false,
+    "unk_init": "mean_of_covered",
+    "eos_covered": false,
+    "sigma_covered": 0.5118322968482971,
+    "missing_seed": 0,
+    "top_missing_by_train_freq": [
+      [
+        "<unk>",
+        54625
+      ],
+      [
+        "<eos>",
+        23767
+      ],
+      [
+        "@-@",
+        16906
+      ],
+      [
+        "@.@",
+        3194
+      ],
+      [
+        "@,@",
+        2699
+      ],
+      [
+        "'t",
+        592
+      ],
+      [
+        "°",
+        258
+      ],
+      [
+        "−",
+        82
+      ],
+      [
+        "'brien",
+        76
+      ],
+      [
+        "×",
+        75
+      ],
+      [
+        "'malley",
+        54
+      ],
+      [
+        "magadheera",
+        53
+      ],
+      [
+        "sorraia",
+        48
+      ],
+      [
+        "degrom",
+        47
+      ],
+      [
+        "₹",
+        45
+      ],
+      [
+        "isesi",
+        44
+      ],
+      [
+        "toniná",
+        44
+      ],
+      [
+        "coldrum",
+        40
+      ],
+      [
+        "mkhedruli",
+        36
+      ],
+      [
+        "vandernoot",
+        36
+      ],
+      [
+        "﻿",
+        36
+      ],
+      [
+        "berhtwald",
+        35
+      ],
+      [
+        "qedar",
+        35
+      ],
+      [
+        "qedarites",
+        35
+      ],
+      [
+        "→",
+        34
+      ],
+      [
+        "'in",
+        33
+      ],
+      [
+        "kōsaku",
+        33
+      ],
+      [
+        "xook",
+        33
+      ],
+      [
+        "ganganelli",
+        32
+      ],
+      [
+        "hygrometricus",
+        32
+      ]
+    ]
+  },
+  "source": "gensim.downloader:glove-wiki-gigaword-100",
+  "path": "C:\\Users\\peter/gensim-data\\glove-wiki-gigaword-100\\glove-wiki-gigaword-100.gz",
+  "n_vectors": 400000
+}

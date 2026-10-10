@@ -1,0 +1,18 @@
+[2026-10-10T23:23:06] lr_sweep rnn lr=0.0003 -> D:\Users\peter\Desktop\dsa4213_a1\results\lr_sweep\rnn\lr0.0003
+[2026-10-10T23:28:30] lr_sweep rnn lr=0.001 -> D:\Users\peter\Desktop\dsa4213_a1\results\lr_sweep\rnn\lr0.001
+[2026-10-10T23:32:29] lr_sweep rnn lr=0.003 -> D:\Users\peter\Desktop\dsa4213_a1\results\lr_sweep\rnn\lr0.003
+[2026-10-10T23:34:46] lr_sweep rnn: best 0.0003 is at the grid edge -> also trying 0.0001
+[2026-10-10T23:34:46] lr_sweep rnn lr=0.0001 -> D:\Users\peter\Desktop\dsa4213_a1\results\lr_sweep\rnn\lr0.0001
+[2026-10-10T23:38:15] lr_sweep rnn: selected lr=0.0003 0.0001:6.7147, 0.0003:6.1806, 0.001:6.2063, 0.003:6.9271
+[2026-10-10T23:38:15] lr_sweep lstm lr=0.0003 -> D:\Users\peter\Desktop\dsa4213_a1\results\lr_sweep\lstm\lr0.0003
+[2026-10-10T23:43:11] lr_sweep lstm lr=0.001 -> D:\Users\peter\Desktop\dsa4213_a1\results\lr_sweep\lstm\lr0.001
+[2026-10-10T23:48:29] lr_sweep lstm lr=0.003 -> D:\Users\peter\Desktop\dsa4213_a1\results\lr_sweep\lstm\lr0.003
+[2026-10-10T23:54:24] lr_sweep lstm: best 0.003 is at the grid edge -> also trying 0.01
+[2026-10-10T23:54:24] lr_sweep lstm lr=0.01 -> D:\Users\peter\Desktop\dsa4213_a1\results\lr_sweep\lstm\lr0.01
+[2026-10-11T00:00:23] lr_sweep lstm: selected lr=0.01 0.0003:6.4333, 0.001:6.1632, 0.003:5.8621, 0.01:5.5817
+[2026-10-11T00:00:23] lr_sweep transformer lr=0.0003 -> D:\Users\peter\Desktop\dsa4213_a1\results\lr_sweep\transformer\lr0.0003
+[2026-10-11T00:05:33] lr_sweep transformer lr=0.001 -> D:\Users\peter\Desktop\dsa4213_a1\results\lr_sweep\transformer\lr0.001
+[2026-10-11T00:10:58] lr_sweep transformer lr=0.003 -> D:\Users\peter\Desktop\dsa4213_a1\results\lr_sweep\transformer\lr0.003
+[2026-10-11T00:16:42] lr_sweep transformer: best 0.003 is at the grid edge -> also trying 0.01
+[2026-10-11T00:16:42] lr_sweep transformer lr=0.01 -> D:\Users\peter\Desktop\dsa4213_a1\results\lr_sweep\transformer\lr0.01
+[2026-10-11T00:21:07] lr_sweep transformer: selected lr=0.003 0.0003:6.1032, 0.001:5.7887, 0.003:5.6347, 0.01:5.7420

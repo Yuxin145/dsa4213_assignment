@@ -1,0 +1,9 @@
+.cache/
+__pycache__/
+*.pyc
+.pytest_cache/
+results_smoke/
+results/**/*.pt
+results/**/*.pt.tmp
+results/part2/embeddings/word2vec.kv*
+logs/

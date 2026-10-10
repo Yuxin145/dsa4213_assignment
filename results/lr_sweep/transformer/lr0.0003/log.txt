@@ -1,0 +1,5 @@
+[2026-10-11T00:00:24] START arch=transformer seed=0 lr=0.0003 device=cuda amp=True micro_batch=32 params={'input_embedding': 2891300, 'core': 1638656, 'output_layer': 7430641, 'total': 11960597, 'trainable': 11960597, 'frozen': 0}
+[2026-10-11T00:03:12] epoch   1 | train 7.5567 | val 6.6533 ppl 775.34 | 167.9s (cum 2.8 min) | lr 3.00e-04 | peak 1885 MB | skipped 0 *
+[2026-10-11T00:05:27] epoch   2 | train 6.5940 | val 6.1032 ppl 447.27 | 133.7s (cum 5.0 min) | lr 3.00e-04 | peak 1885 MB | skipped 0 *
+[2026-10-11T00:05:28] STOP reason=max_epochs best_epoch=2 best_val=6.1032
+[2026-10-11T00:05:33] FINAL (best ckpt, epoch 2) val ppl 447.27

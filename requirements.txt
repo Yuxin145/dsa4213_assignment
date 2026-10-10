@@ -1,0 +1,14 @@
+# Python 3.12, conda env dsa4213. torch is the existing CUDA build (2.14.1+cu132): do NOT pip-install torch on Windows
+# (it may replace the CUDA build with a CPU-only one); install torch from the official CUDA index if needed.
+torch==2.14.1+cu132
+numpy==2.5.2
+scipy==1.18.1
+scikit-learn==1.9.1
+gensim==4.4.0
+datasets==5.1.0
+huggingface_hub==2.2.0
+PyYAML==6.0.3
+pytest==9.1.1
+matplotlib==3.11.2
+pandas==3.0.6
+pyarrow==26.0.0

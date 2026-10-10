@@ -1,0 +1,39 @@
+{
+  "kind": "own_frozen",
+  "vocab_sha256": "86014eda035ebfe9d43635c0a277dbe0f506b553b1c66b3711bdab20f47b153f",
+  "matrix_path": "D:\\Users\\peter\\Desktop\\dsa4213_a1\\results\\part2\\embeddings\\own_frozen_matrix.pt",
+  "matrix_sha256": "f25294ef7dc4757131899013099f3e148cbd4db831f544ca067a9e562e06d648",
+  "coverage": {
+    "types_total": 28912,
+    "types_covered": 28912,
+    "type_coverage": 1.0,
+    "train_tokens_total": 2075677,
+    "train_tokens_covered": 2075677,
+    "token_coverage": 1.0,
+    "missing_types": 0,
+    "missing_random_init": 0,
+    "unk_covered": true,
+    "unk_init": "source_vector",
+    "eos_covered": true,
+    "sigma_covered": 0.25335943698883057,
+    "missing_seed": 0,
+    "top_missing_by_train_freq": []
+  },
+  "source": "own word2vec skip-gram (gensim)",
+  "train_time_s": 403.0591220999995,
+  "n_vectors": 28912,
+  "path": "D:\\Users\\peter\\Desktop\\dsa4213_a1\\results\\part2\\embeddings\\word2vec.kv",
+  "sha256": "65ce41d1ea6f420bdff1e006f453c02650d39a6360f821171dd012779b1d64a4",
+  "params": {
+    "vector_size": 100,
+    "window": 5,
+    "min_count": 1,
+    "negative": 10,
+    "epochs": 10,
+    "seed": 0,
+    "workers": 1,
+    "sg": 1
+  },
+  "n_sentences": 23767,
+  "n_tokens": 2075677
+}

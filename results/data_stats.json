@@ -1,0 +1,27 @@
+{
+  "vocab_size": 28913,
+  "vocab_sha256": "86014eda035ebfe9d43635c0a277dbe0f506b553b1c66b3711bdab20f47b153f",
+  "splits": {
+    "train": {
+      "lines": 23767,
+      "tokens": 2075677,
+      "unk_tokens": 54625,
+      "unk_rate": 0.02631671540439129,
+      "targets": 2075676
+    },
+    "validation": {
+      "lines": 2461,
+      "tokens": 216347,
+      "unk_tokens": 11718,
+      "unk_rate": 0.05416298657655716,
+      "targets": 216346
+    },
+    "test": {
+      "lines": 2891,
+      "tokens": 244102,
+      "unk_tokens": 15218,
+      "unk_rate": 0.06234279274940491,
+      "targets": 244101
+    }
+  }
+}
