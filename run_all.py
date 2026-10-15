@@ -16,7 +16,7 @@ import subprocess
 import sys
 
 from src import pipeline as P
-from src.utils import ROOT, Logger, get_device, results_root
+from src.utils import ROOT, Logger, get_device, require_clean_source, results_root
 
 STAGES = ("data", "ngram", "lr_sweep", "profile", "speedcheck", "train", "generation", "part3", "benchmark", "report", "full")
 
@@ -41,14 +41,16 @@ def main() -> None:
     smoke = args.smoke
     cfg = P.get_cfg(smoke)
     device = get_device(args.device)
-    root = results_root(cfg, smoke)
-    root.mkdir(parents=True, exist_ok=True)
-    log = Logger(root / "run_all_log.txt")
-    log(f"run_all stage={args.stage} smoke={smoke} device={device} python={sys.executable}")
     variants = args.variants or list(P.VARIANTS)
     stage = args.stage or ("smoke" if smoke else None)
     if stage is None:
         ap.error("choose --stage (or --smoke for the end-to-end smoke run)")
+    if not smoke:
+        require_clean_source()
+    root = results_root(cfg, smoke)
+    root.mkdir(parents=True, exist_ok=True)
+    log = Logger(root / "run_all_log.txt")
+    log(f"run_all stage={args.stage} smoke={smoke} device={device} python={sys.executable}")
 
     if stage in ("data", "smoke", "full"):
         P.stage_data(cfg, smoke, log)

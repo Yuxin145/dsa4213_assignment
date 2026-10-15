@@ -14,7 +14,7 @@ own writing or completion; **MISSING** = not satisfied. Updated 2026-10-15 after
 | I2 | n-gram with smoothing/interpolation | interpolated trigram, λ on validation (`results/part1/ngram/metrics.json`, test 2) | DONE |
 | I3 | RNN, LSTM, Transformer with causal self-attention | `src/models.py`; causal mask (test 3) | DONE |
 | I4 | Random, trainable input embeddings for the three neural models | `make_embedding` (std 0.1, `<pad>` row 0); `params.frozen = 0` in Part I metrics | DONE |
-| I5 | Document architectures, hyperparameters, context, decoding | `configs/base.yaml`, `configs/lr_selected.yaml`, DECISIONS.md, README | DONE |
+| I5 | Document architectures, hyperparameters, context, decoding | Full settings: `configs/base.yaml`, `configs/lr_selected.yaml`, DECISIONS.md, README; report currently gives only a compressed setup | DONE / STUDENT (add architecture/decoding detail to report) |
 | I6 | All models predict each target using only preceding tokens | tests 3, 15; n-gram context reset per chunk (test `context_reset_at_chunk_start`) | DONE |
 | I7 | Test perplexity / CE on common evaluation setup, padding excluded | `results/tables/part1_main.md` (ppl + CE, mean ± std over 3 seeds); tests 4, 5 | DONE |
 | I8 | Training time, model size, inference time/throughput | `part1_main` (param split, time to best, train time, s/epoch, GPU/CPU tok/s, latency); `results/part1/benchmark.json` | DONE |

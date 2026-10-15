@@ -10,12 +10,14 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from src import pipeline as P  # noqa: E402
-from src.utils import Logger, results_root  # noqa: E402
+from src.utils import Logger, require_clean_source, results_root  # noqa: E402
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--smoke", action="store_true")
     a = ap.parse_args()
+    if not a.smoke:
+        require_clean_source()
     cfg = P.get_cfg(a.smoke)
     log = Logger(results_root(cfg, a.smoke) / "part2" / "embeddings" / "log.txt")
     for v in P.PART2_NEW:
