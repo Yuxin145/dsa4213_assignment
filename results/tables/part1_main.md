@@ -1,0 +1,8 @@
+| model | test ppl | test CE (nats) | val ppl | emb params | core params | output params | total params | best epoch(s) | time to best (s) | train time (s) | s/epoch (train) | GPU tok/s | CPU tok/s | GPU latency 50 tok (ms) | CPU latency 50 tok (ms) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Trigram (interp.) | 248.73 | 5.5164 | 264.06 | – | – | – | 1.99M counts | – | 61 (count+λ search) | – | – | – | 334487 | – | 47.8 |
+| RNN | 156.22 ± 1.04 | 5.0513 ± 0.0067 | 167.95 ± 1.01 | 2.89M | 0.22M | 7.43M | 10.55M | 40,39,39 | 1951 ± 19 | 1985 ± 10 | 47.6 ± 0.3 | 112182 | 9500 | 81.0 | 194.8 |
+| LSTM | 135.62 ± 2.73 | 4.9097 ± 0.0200 | 144.52 ± 2.93 | 2.89M | 0.89M | 7.43M | 11.21M | 11,13,10 | 652 ± 81 | 822 ± 79 | 55.1 ± 1.2 | 94654 | 14929 | 166.2 | 235.5 |
+| Transformer | 135.19 ± 1.23 | 4.9067 ± 0.0091 | 142.63 ± 1.05 | 2.89M | 1.64M | 7.43M | 11.96M | 24,27,16 | 1225 ± 311 | 1390 ± 311 | 52.9 ± 0.1 | 115679 | 12008 | 128.5 | 251.7 |
+
+Mean ± std over seeds [0, 1, 2] for neural models ("(n=k)" marks rows with fewer finished seeds); n-gram is deterministic. Throughput: scoring every target of the test split, batch 32 chunks, median of 3 runs. Latency: greedy 50 new tokens, batch 1, median of 5 runs. Timing hardware in benchmark.json.

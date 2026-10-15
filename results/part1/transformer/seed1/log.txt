@@ -1,0 +1,33 @@
+[2026-10-11T05:53:29] START arch=transformer seed=1 lr=0.003 device=cuda amp=True micro_batch=32 params={'input_embedding': 2891300, 'core': 1638656, 'output_layer': 7430641, 'total': 11960597, 'trainable': 11960597, 'frozen': 0}
+[2026-10-11T05:54:24] epoch   1 | train 6.7917 | val 5.9113 ppl 369.18 | 54.8s (cum 0.9 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T05:55:19] epoch   2 | train 5.9696 | val 5.6330 ppl 279.51 | 54.7s (cum 1.8 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T05:56:14] epoch   3 | train 5.6889 | val 5.4666 ppl 236.64 | 54.7s (cum 2.7 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T05:57:10] epoch   4 | train 5.4879 | val 5.3558 ppl 211.83 | 54.5s (cum 3.6 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T05:58:05] epoch   5 | train 5.3368 | val 5.2767 ppl 195.72 | 54.8s (cum 4.6 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T05:59:01] epoch   6 | train 5.2156 | val 5.2104 ppl 183.17 | 55.2s (cum 5.5 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T05:59:56] epoch   7 | train 5.1090 | val 5.1640 ppl 174.86 | 54.4s (cum 6.4 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:00:51] epoch   8 | train 5.0150 | val 5.1280 ppl 168.68 | 54.9s (cum 7.3 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:01:46] epoch   9 | train 4.9319 | val 5.1003 ppl 164.07 | 54.5s (cum 8.2 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:02:41] epoch  10 | train 4.8601 | val 5.0680 ppl 158.86 | 54.6s (cum 9.1 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:03:36] epoch  11 | train 4.7960 | val 5.0474 ppl 155.62 | 54.7s (cum 10.0 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:04:32] epoch  12 | train 4.7398 | val 5.0297 ppl 152.89 | 54.7s (cum 10.9 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:05:27] epoch  13 | train 4.6863 | val 5.0166 ppl 150.89 | 54.5s (cum 11.9 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:06:22] epoch  14 | train 4.6417 | val 5.0079 ppl 149.59 | 54.8s (cum 12.8 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:07:17] epoch  15 | train 4.5983 | val 4.9939 ppl 147.51 | 54.7s (cum 13.7 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:08:13] epoch  16 | train 4.5591 | val 4.9867 ppl 146.45 | 55.0s (cum 14.6 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:09:08] epoch  17 | train 4.5237 | val 4.9855 ppl 146.28 | 54.8s (cum 15.5 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:10:03] epoch  18 | train 4.4897 | val 4.9825 ppl 145.84 | 54.6s (cum 16.4 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:10:58] epoch  19 | train 4.4586 | val 4.9709 ppl 144.16 | 54.6s (cum 17.3 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:11:54] epoch  20 | train 4.4314 | val 4.9716 ppl 144.25 | 54.9s (cum 18.2 min) | lr 3.00e-03 | peak 1885 MB | skipped 0
+[2026-10-11T06:12:49] epoch  21 | train 4.4041 | val 4.9661 ppl 143.47 | 54.8s (cum 19.2 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:13:44] epoch  22 | train 4.3812 | val 4.9645 ppl 143.24 | 55.0s (cum 20.1 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:14:40] epoch  23 | train 4.3591 | val 4.9569 ppl 142.15 | 54.9s (cum 21.0 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:15:35] epoch  24 | train 4.3362 | val 4.9628 ppl 142.99 | 54.8s (cum 21.9 min) | lr 3.00e-03 | peak 1885 MB | skipped 1
+[2026-10-11T06:16:30] epoch  25 | train 4.3177 | val 4.9558 ppl 141.99 | 54.8s (cum 22.8 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:17:26] epoch  26 | train 4.2977 | val 4.9529 ppl 141.58 | 54.9s (cum 23.7 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:18:21] epoch  27 | train 4.2812 | val 4.9518 ppl 141.43 | 55.1s (cum 24.6 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T06:19:17] epoch  28 | train 4.2642 | val 4.9608 ppl 142.71 | 54.8s (cum 25.6 min) | lr 3.00e-03 | peak 1885 MB | skipped 1
+[2026-10-11T06:20:12] epoch  29 | train 4.2487 | val 4.9527 ppl 141.56 | 55.0s (cum 26.5 min) | lr 3.00e-03 | peak 1885 MB | skipped 0
+[2026-10-11T06:21:08] epoch  30 | train 4.2327 | val 4.9662 ppl 143.49 | 55.0s (cum 27.4 min) | lr 3.00e-03 | peak 1885 MB | skipped 0
+[2026-10-11T06:21:08] STOP reason=early_stopping best_epoch=27 best_val=4.9518
+[2026-10-11T06:21:12] FINAL (best ckpt, epoch 27) val ppl 141.43 test ppl 133.83

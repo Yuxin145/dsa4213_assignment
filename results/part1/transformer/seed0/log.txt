@@ -1,0 +1,30 @@
+[2026-10-11T04:07:57] START arch=transformer seed=0 lr=0.003 device=cuda amp=True micro_batch=32 params={'input_embedding': 2891300, 'core': 1638656, 'output_layer': 7430641, 'total': 11960597, 'trainable': 11960597, 'frozen': 0}
+[2026-10-11T04:08:52] epoch   1 | train 6.7868 | val 5.9083 ppl 368.07 | 55.1s (cum 0.9 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:09:48] epoch   2 | train 5.9685 | val 5.6287 ppl 278.29 | 54.8s (cum 1.8 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:10:44] epoch   3 | train 5.6827 | val 5.4761 ppl 238.92 | 55.2s (cum 2.8 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:11:39] epoch   4 | train 5.4837 | val 5.3631 ppl 213.39 | 55.0s (cum 3.7 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:12:35] epoch   5 | train 5.3370 | val 5.2801 ppl 196.40 | 54.9s (cum 4.6 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:13:30] epoch   6 | train 5.2161 | val 5.2240 ppl 185.67 | 54.8s (cum 5.5 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:14:25] epoch   7 | train 5.1096 | val 5.1648 ppl 175.01 | 55.1s (cum 6.4 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:15:21] epoch   8 | train 5.0149 | val 5.1242 ppl 168.04 | 54.9s (cum 7.3 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:16:16] epoch   9 | train 4.9344 | val 5.1050 ppl 164.85 | 55.1s (cum 8.2 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:17:12] epoch  10 | train 4.8626 | val 5.0730 ppl 159.66 | 54.9s (cum 9.2 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:18:07] epoch  11 | train 4.7983 | val 5.0727 ppl 159.61 | 54.9s (cum 10.1 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:19:03] epoch  12 | train 4.7404 | val 5.0304 ppl 152.99 | 54.8s (cum 11.0 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:19:58] epoch  13 | train 4.6871 | val 5.0343 ppl 153.60 | 54.7s (cum 11.9 min) | lr 3.00e-03 | peak 1885 MB | skipped 0
+[2026-10-11T04:20:53] epoch  14 | train 4.6412 | val 5.0221 ppl 151.73 | 55.2s (cum 12.8 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:21:49] epoch  15 | train 4.5977 | val 5.0075 ppl 149.53 | 54.6s (cum 13.7 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:22:44] epoch  16 | train 4.5595 | val 4.9921 ppl 147.24 | 54.9s (cum 14.6 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:23:40] epoch  17 | train 4.5214 | val 4.9950 ppl 147.67 | 55.2s (cum 15.6 min) | lr 3.00e-03 | peak 1885 MB | skipped 0
+[2026-10-11T04:24:35] epoch  18 | train 4.4880 | val 4.9893 ppl 146.83 | 54.6s (cum 16.5 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:25:30] epoch  19 | train 4.4572 | val 4.9925 ppl 147.31 | 54.7s (cum 17.4 min) | lr 3.00e-03 | peak 1885 MB | skipped 0
+[2026-10-11T04:26:25] epoch  20 | train 4.4295 | val 4.9754 ppl 144.81 | 54.8s (cum 18.3 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:27:21] epoch  21 | train 4.4023 | val 4.9728 ppl 144.43 | 54.8s (cum 19.2 min) | lr 3.00e-03 | peak 1885 MB | skipped 0 *
+[2026-10-11T04:28:17] epoch  22 | train 4.3775 | val 4.9736 ppl 144.55 | 55.2s (cum 20.1 min) | lr 3.00e-03 | peak 1885 MB | skipped 0
+[2026-10-11T04:29:12] epoch  23 | train 4.3556 | val 4.9735 ppl 144.53 | 55.0s (cum 21.1 min) | lr 3.00e-03 | peak 1885 MB | skipped 0
+[2026-10-11T04:30:08] epoch  24 | train 4.3331 | val 4.9632 ppl 143.05 | 55.0s (cum 22.0 min) | lr 3.00e-03 | peak 1885 MB | skipped 1 *
+[2026-10-11T04:31:03] epoch  25 | train 4.3149 | val 4.9718 ppl 144.29 | 54.6s (cum 22.9 min) | lr 3.00e-03 | peak 1885 MB | skipped 0
+[2026-10-11T04:31:58] epoch  26 | train 4.2954 | val 4.9741 ppl 144.62 | 54.7s (cum 23.8 min) | lr 3.00e-03 | peak 1885 MB | skipped 0
+[2026-10-11T04:32:53] epoch  27 | train 4.2767 | val 4.9691 ppl 143.89 | 54.9s (cum 24.7 min) | lr 3.00e-03 | peak 1885 MB | skipped 0
+[2026-10-11T04:32:54] STOP reason=early_stopping best_epoch=24 best_val=4.9632
+[2026-10-11T04:32:58] FINAL (best ckpt, epoch 24) val ppl 143.05 test ppl 135.51

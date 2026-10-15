@@ -72,7 +72,7 @@ def main():
     root = results_root(cfg, args.smoke)
     tdir = root / "tables"
     seeds = cfg["train"]["seeds"]
-    T = {"seeds": seeds, "smoke": args.smoke}
+    T = {"seeds": seeds, "smoke": args.smoke, "max_epochs": cfg["train"]["max_epochs"]}
 
     # ------------------------------------------------------------------ data
     ds = load_json(root / "data_stats.json")
@@ -235,6 +235,76 @@ def main():
                       "rank": rows, "oov": oov, "pairwise_counts": {k: (v["count"] if isinstance(v, dict) else v)
                                                                     for k, v in err["pairwise"].items()},
                       "truncated_fraction": r3["truncated_fraction"]}
+
+        # ---- Part III over LM seeds (same protocol on the seed-1/2 checkpoints; seed 0 stays the main result)
+        from scipy.stats import binomtest
+
+        from src.pipeline import part3_dir
+
+        per_seed = {}
+        for s in seeds:
+            fp = part3_dir(root, s) / "results.json"
+            if fp.exists():
+                per_seed[s] = (load_json(fp), load_json(part3_dir(root, s) / "errors.json"))
+        if len(per_seed) > 1:
+            ms = sorted(per_seed)
+            ppl_key = lambda p: p.get("lm_test_ppl", p.get("lm_test_ppl_seed0"))
+            agg = {}
+            rows = []
+            for name in reps:
+                accs = [per_seed[s][0]["representations"][name]["test_acc"] for s in ms]
+                f1s = [per_seed[s][0]["representations"][name]["test_macro_f1"] for s in ms]
+                ppls = [ppl_key({p["representation"]: p for p in per_seed[s][0]["ppl_vs_downstream"]}[name]) for s in ms]
+                ppls = [p for p in ppls if p is not None]
+                agg[name] = {"test_acc": mean_std(accs), "test_macro_f1": mean_std(f1s),
+                             "lm_test_ppl": mean_std(ppls) if ppls else None, "per_seed_acc": dict(zip(ms, accs)),
+                             "per_seed_macro_f1": dict(zip(ms, f1s)), "per_seed_C":
+                                 {s: per_seed[s][0]["representations"][name]["selection"]["best_C"] for s in ms}}
+                a = agg[name]
+                rows.append([name + (" (main)" if name in r3["main_comparison"] else ""),
+                             f"{reps[name]['test_acc']:.4f}", fmt(*a["test_acc"], prec=4),
+                             " / ".join(f"{x:.4f}" for x in accs),
+                             f"{reps[name]['test_macro_f1']:.4f}", fmt(*a["test_macro_f1"], prec=4),
+                             "–" if not ppls else fmt(*a["lm_test_ppl"]),
+                             " / ".join(str(a["per_seed_C"][s]) for s in ms)])
+            write_table(tdir, "part3_seeds",
+                        ["representation", "test acc (seed 0)", f"test acc mean ± std (seeds {ms})", "per-seed acc",
+                         "macro-F1 (seed 0)", "macro-F1 mean ± std", "LM test ppl mean ± std", "C per seed"], rows,
+                        "Identical protocol for every LM seed (same AG News split, conversion, pooling, classifier, "
+                        "C grid on validation, test once). glove_avg_baseline does not depend on the LM seed. "
+                        "Std = sample std over LM seeds.")
+            # paired LSTM vs Transformer comparison on the same 7,600 test articles, per LM seed
+            rows, pair_rec = [], []
+            for s in ms:
+                r, e = per_seed[s]
+                la, ta = r["representations"]["lstm_mean"]["test_acc"], r["representations"]["transformer_mean"]["test_acc"]
+                b = e["pairwise"]["lstm_right_transformer_wrong"]["count"]
+                c = e["pairwise"]["transformer_right_lstm_wrong"]["count"]
+                pval = binomtest(min(b, c), b + c, 0.5).pvalue
+                pair_rec.append({"seed": s, "lstm_acc": la, "transformer_acc": ta, "diff": ta - la, "b": b, "c": c,
+                                 "mcnemar_exact_p": pval})
+                rows.append([s, f"{la:.4f}", f"{ta:.4f}", f"{ta - la:+.4f}", b, c, f"{pval:.1e}"])
+            d = mean_std([x["diff"] for x in pair_rec])
+            rows.append(["mean ± std", fmt(*agg["lstm_mean"]["test_acc"], prec=4),
+                         fmt(*agg["transformer_mean"]["test_acc"], prec=4), fmt(*d, prec=4), "", "", ""])
+            write_table(tdir, "part3_pairwise",
+                        ["LM seed", "LSTM acc", "Transformer acc", "Transformer − LSTM", "only LSTM right (b)",
+                         "only Transformer right (c)", "exact McNemar p"], rows,
+                        "Mean pooling, main comparison. b/c count test articles that exactly one model classifies "
+                        "correctly; the exact McNemar test is a two-sided binomial test of b vs c (paired, same "
+                        "test set, per LM seed).")
+            # rank agreement using seed-mean LM ppl and seed-mean accuracy
+            lm_names = [n for n in agg if n.endswith("_mean") and agg[n]["lm_test_ppl"]]
+            by_ppl = sorted(lm_names, key=lambda n: agg[n]["lm_test_ppl"][0])
+            by_acc = sorted(lm_names, key=lambda n: -agg[n]["test_acc"][0])
+            rows = [[n, fmt(*agg[n]["lm_test_ppl"]), by_ppl.index(n) + 1, fmt(*agg[n]["test_acc"], prec=4),
+                     by_acc.index(n) + 1] for n in lm_names]
+            write_table(tdir, "part3_rank_seeds", ["representation (mean pooling)", "LM test ppl (mean ± std)",
+                                                   "ppl rank", "test acc (mean ± std)", "downstream rank"], rows)
+            T["part3"]["seeds"] = ms
+            T["part3"]["aggregate"] = agg
+            T["part3"]["pairwise_lstm_vs_transformer"] = pair_rec
+            T["part3"]["rank_seeds"] = rows
     save_json(T, tdir / "tables.json")
     print(f"tables written to {tdir}")
 

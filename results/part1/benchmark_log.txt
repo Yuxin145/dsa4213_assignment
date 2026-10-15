@@ -1,0 +1,4 @@
+[2026-10-11T08:23:21] ngram: {'cpu_throughput': {'tokens_per_s_median': 334487.07574074116, 'tokens_per_s_runs': [326820.9127998735, 334487.07574074116, 340140.7313972004], 'timed_tokens_per_run': 223621, 'warmup_batches_used': 5, 'n_batches': 60}, 'cpu_latency': {'latency_s_median': 0.047827299997152295, 'latency_s_runs': [0.055174799999804236, 0.047941099997842684, 0.04670379999879515, 0.046229999999923166, 0.047827299997152295], 'ms_per_token': 0.9565459999430459}}
+[2026-10-11T08:24:42] rnn: cpu_throughput=9500 tok/s, gpu_throughput=112182 tok/s, cpu_latency=194.8 ms, gpu_latency=81.0 ms
+[2026-10-11T08:25:41] lstm: cpu_throughput=14929 tok/s, gpu_throughput=94654 tok/s, cpu_latency=235.5 ms, gpu_latency=166.2 ms
+[2026-10-11T08:26:50] transformer: cpu_throughput=12008 tok/s, gpu_throughput=115679 tok/s, cpu_latency=251.7 ms, gpu_latency=128.5 ms

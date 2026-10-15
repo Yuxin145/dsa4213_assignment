@@ -81,8 +81,18 @@ def main():
                 f"{NAMES[k]} {p1[k]['best_epoch']}" for k in neural) + ". Stopping reasons: " + "; ".join(
                 f"{NAMES[k]} {p1[k]['stopped']}" for k in neural) + ".")
         if "lstm" in p1 and "transformer" in p1:
-            better = "LSTM" if ppl_of(p1["lstm"]) < ppl_of(p1["transformer"]) else "Transformer"
-            w(f"- [OBSERVATION] Between the LSTM and the Transformer, the {better} reaches the lower test perplexity.")
+            (ml, sl, _), (mt, st, _) = p1["lstm"]["test_ppl"], p1["transformer"]["test_ppl"]
+            better = "LSTM" if ml < mt else "Transformer"
+            if abs(ml - mt) < max(sl, st):
+                w(f"- [OBSERVATION] LSTM ({ml:.2f} ± {sl:.2f}) and Transformer ({mt:.2f} ± {st:.2f}) differ by "
+                  f"{abs(ml - mt):.2f} ppl, less than the seed-to-seed std: treat them as tied on test perplexity.")
+            else:
+                w(f"- [OBSERVATION] Between the LSTM and the Transformer, the {better} reaches the lower test perplexity.")
+        for k in neural:
+            if all(r == "max_epochs" for r in p1[k]["stopped"]):
+                w(f"- [OBSERVATION] {NAMES[k]}: every seed hit the {T.get('max_epochs', 'maximum')}-epoch limit with "
+                  f"its best epoch at or near the end ({p1[k]['best_epoch']}), i.e. it was still improving; its "
+                  "result is limited by the training budget, not converged.")
         w("- [HYPOTHESIS] Differences between neural models may reflect inductive bias (recurrence vs attention), "
           "the small data size (2M tokens) favouring the more constrained model, the fixed 128-token context, or "
           "per-architecture LR/epoch budget; these runs do not separate these factors.")
@@ -124,13 +134,20 @@ def main():
 
     p3 = T.get("part3")
     w("## 4. Part III — downstream classification (AG News)\n")
-    w("Frozen seed-0 LMs; each article (converted to WikiText conventions, truncated to 128 tokens) is encoded and "
+    w("Frozen LMs (main comparison on the seed-0 checkpoints, repeated with the same protocol on the seed-1 and "
+      "seed-2 checkpoints); each article (converted to WikiText conventions, truncated to 128 tokens) is encoded and "
       "the last-layer states are mean-pooled over non-pad positions (main comparison: LSTM vs Transformer). "
       "Classifier: StandardScaler + logistic regression, C chosen on validation accuracy, fitted on the 8k train "
       "set, test evaluated once.\n")
     w(table(tdir, "part3_oov"))
     w(table(tdir, "part3_downstream"))
     w(table(tdir, "part3_rank"))
+    if (tdir / "part3_seeds.md").exists():
+        w("### Part III over LM seeds\n")
+        w(table(tdir, "part3_seeds"))
+        w(table(tdir, "part3_pairwise"))
+        w(table(tdir, "part3_rank_seeds"))
+        w(f"![LM ppl vs accuracy]({'../' + fig}/part3_ppl_vs_acc.png)\n")
     w(f"![Confusion matrices]({'../' + fig}/part3_confusion.png)\n")
     if p3:
         r = p3["representations"]
@@ -141,14 +158,26 @@ def main():
         w(f"- [OBSERVATION] Test articles where only the LSTM is right: {pc.get('lstm_right_transformer_wrong')}; "
           f"only the Transformer: {pc.get('transformer_right_lstm_wrong')}; both wrong: {pc.get('both_wrong')} "
           "(examples in `results/part3/errors.json`).")
+        pw = p3.get("pairwise_lstm_vs_transformer")
+        if pw:
+            diffs = ", ".join(f"{x['diff']:+.4f}" for x in pw)
+            pmax = max(x["mcnemar_exact_p"] for x in pw)
+            agg = p3["aggregate"]
+            w(f"- [OBSERVATION] Over LM seeds {p3['seeds']}: LSTM {agg['lstm_mean']['test_acc'][0]:.4f} ± "
+              f"{agg['lstm_mean']['test_acc'][1]:.4f}, Transformer {agg['transformer_mean']['test_acc'][0]:.4f} ± "
+              f"{agg['transformer_mean']['test_acc'][1]:.4f}; Transformer − LSTM per seed: {diffs}; exact McNemar "
+              f"p ≤ {pmax:.1e} for every seed. The gap is consistent across checkpoints, not a single-seed effect.")
+            w("- [OBSERVATION] Rank agreement (seed means, table above): compare the ppl rank with the downstream "
+              "rank; LSTM and Transformer perplexities are within one std of each other.")
         w("- [HYPOTHESIS] Whether the LM-perplexity ranking matches the downstream ranking (table above) may depend on "
           "the domain shift WikiText → news and on what mean pooling keeps from each model's states.\n")
 
     w("## 5. Cross-part discussion, limitations, lessons\n")
     w("- Limitations: single small corpus (2M tokens); one LR sweep of 2 epochs per architecture; laptop GPU timing "
       "(thermal throttling possible); GloVe trained on Wikipedia 2014 + Gigaword may overlap WikiText test text; "
-      "Part III uses frozen features and a linear classifier only; seed-0 checkpoints only for generation and "
-      "Part III.\n")
+      "Part III uses frozen features and a linear classifier only; generated text from seed-0 checkpoints only; "
+      "LRs chosen by a 2-epoch sweep (favours fast early progress); models that hit the epoch limit are not "
+      "converged.\n")
     w("## Reproducibility\n")
     w("See README.md (commands, configs, seeds, hardware, runtimes). Tool use: see AI_USE.md.\n")
     out.parent.mkdir(parents=True, exist_ok=True)

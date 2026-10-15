@@ -1,0 +1,591 @@
+{
+  "misclassified": {
+    "lstm_mean": [
+      {
+        "test_idx": 0,
+        "text": "Fears for T N pension after talks Unions representing workers at Turner   Newall say they are 'disappointed' after talks with stricken parent firm Federal Mogul.",
+        "gold": "Business",
+        "pred": "World"
+      },
+      {
+        "test_idx": 1,
+        "text": "The Race is On: Second Private Team Sets Launch Date for Human Spaceflight (SPACE.com) SPACE.com - TORONTO, Canada -- A second\\team of rocketeers competing for the  #36;10 million Ansari X Prize, a contest for\\privately funded suborbital space flight, has officially announced the first\\launch date for its manned rocket.",
+        "gold": "Sci/Tech",
+        "pred": "Sports"
+      },
+      {
+        "test_idx": 5,
+        "text": "Open Letter Against British Copyright Indoctrination in Schools The British Department for Education and Skills (DfES) recently launched a \"Music Manifesto\" campaign, with the ostensible intention of educating the next generation of British musicians. Unfortunately, they also teamed up with the music industry (EMI, and various artists) to make this popular. EMI has apparently negotiated their end well, so that children in our schools will now be indoctrinated about the illegality of downloading music.The ignorance and audacity of this got to me a little, so I wrote an open letter to the DfES about it. Unfortunately, it's pedantic, as I suppose you have to be when writing to goverment representatives. But I hope you find it useful, and perhaps feel inspired to do something similar, if or when the same thing has happened in your area.",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 6,
+        "text": "Loosing the War on Terrorism \\\\\"Sven Jaschan, self-confessed author of the Netsky and Sasser viruses, is\\responsible for 70 percent of virus infections in 2004, according to a six-month\\virus roundup published Wednesday by antivirus company Sophos.\"\\\\\"The 18-year-old Jaschan was taken into custody in Germany in May by police who\\said he had admitted programming both the Netsky and Sasser worms, something\\experts at Microsoft confirmed. (A Microsoft antivirus reward program led to the\\teenager's arrest.) During the five months preceding Jaschan's capture, there\\were at least 25 variants of Netsky and one of the port-scanning network worm\\Sasser.\"\\\\\"Graham Cluley, senior technology consultant at Sophos, said it was staggeri ...\\\\",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 9,
+        "text": "Card fraud unit nets 36,000 cards In its first two years, the UK's dedicated card fraud unit, has recovered 36,000 stolen cards and 171 arrests - and estimates it saved 65m.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 10,
+        "text": "Group to Propose New High-Speed Wireless Format  LOS ANGELES (Reuters) - A group of technology companies  including Texas Instruments Inc. &lt;TXN.N&gt;, STMicroelectronics  &lt;STM.PA&gt; and Broadcom Corp. &lt;BRCM.O&gt;, on Thursday said they  will propose a new wireless networking standard up to 10 times  the speed of the current generation.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 13,
+        "text": "Super ant colony hits Australia A giant 100km colony of ants  which has been discovered in Melbourne, Australia, could threaten local insect species.",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 15,
+        "text": "Teenage T. rex's monster growth Tyrannosaurus rex achieved its massive size due to an enormous growth spurt during its adolescent years.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 18,
+        "text": "Rocking the Cradle of Life When did life begin? One evidential clue stems from the fossil records in Western Australia, although whether these layered sediments are biological or chemical has spawned a spirited debate. Oxford researcher, Nicola McLoughlin, describes some of the issues in contention.",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 24,
+        "text": "Rivals Try to Turn Tables on Charles Schwab By MICHAEL LIEDTKE     SAN FRANCISCO (AP) -- With its low prices and iconoclastic attitude, discount stock broker Charles Schwab Corp. (SCH) represented an annoying stone in Wall Street's wing-tipped shoes for decades...",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      }
+    ],
+    "transformer_mean": [
+      {
+        "test_idx": 0,
+        "text": "Fears for T N pension after talks Unions representing workers at Turner   Newall say they are 'disappointed' after talks with stricken parent firm Federal Mogul.",
+        "gold": "Business",
+        "pred": "World"
+      },
+      {
+        "test_idx": 13,
+        "text": "Super ant colony hits Australia A giant 100km colony of ants  which has been discovered in Melbourne, Australia, could threaten local insect species.",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 15,
+        "text": "Teenage T. rex's monster growth Tyrannosaurus rex achieved its massive size due to an enormous growth spurt during its adolescent years.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 28,
+        "text": "Shoppach doesn't appear ready to hit the next level With the weeks dwindling until Jason Varitek enters free agency, the Red Sox continue to carefully monitor Kelly Shoppach , their catcher of the future, in his climb toward the majors. The Sox like most of what they have seen at Triple A Pawtucket from Shoppach, though it remains highly uncertain whether he can make the adjustments at the plate ...",
+        "gold": "Sports",
+        "pred": "Sci/Tech"
+      },
+      {
+        "test_idx": 43,
+        "text": "Spam suspension hits Sohu.com shares (FT.com) FT.com - Shares in Sohu.com, a leading US-listed Chinese internet portal, fell more than 10 per cent on Friday after China's biggest mobile phone network operator imposed a one-year suspension on its multimedia messaging services because of customers being sent spam.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 52,
+        "text": "Restive Maldives eases curfew after rounding up dissidents (AFP) AFP - A curfew in the capital of the Maldives was eased but parliament sessions were put off indefinitely and emergency rule continued following last week's riots, officials and residents said.",
+        "gold": "World",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 55,
+        "text": "Promoting a Shared Vision As Michael Kaleko kept running into people who were getting older and having more vision problems, he realized he could do something about it.",
+        "gold": "Sci/Tech",
+        "pred": "Sports"
+      },
+      {
+        "test_idx": 56,
+        "text": "India's Tata expands regional footprint via NatSteel buyout (AFP) AFP - India's Tata Iron and Steel Company Ltd. took a strategic step to expand its Asian footprint with the announcement it will buy the Asia-Pacific steel operations of Singapore's NatSteel Ltd.",
+        "gold": "World",
+        "pred": "Sci/Tech"
+      },
+      {
+        "test_idx": 64,
+        "text": "UN launches 210-million-dollar appeal for flood-hit Bangladesh (AFP) AFP - The United Nations launched an appeal here for 210 million dollars to help flood victims facing \"grave\" food shortages after two-thirds of Bangladesh was submerged, destroying crops and killing more than 700 people.",
+        "gold": "World",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 79,
+        "text": "Live: Olympics day four Richard Faulds and Stephen Parry are going for gold for Great Britain on day four in Athens.",
+        "gold": "World",
+        "pred": "Sports"
+      }
+    ],
+    "lstm_last": [
+      {
+        "test_idx": 0,
+        "text": "Fears for T N pension after talks Unions representing workers at Turner   Newall say they are 'disappointed' after talks with stricken parent firm Federal Mogul.",
+        "gold": "Business",
+        "pred": "Sci/Tech"
+      },
+      {
+        "test_idx": 1,
+        "text": "The Race is On: Second Private Team Sets Launch Date for Human Spaceflight (SPACE.com) SPACE.com - TORONTO, Canada -- A second\\team of rocketeers competing for the  #36;10 million Ansari X Prize, a contest for\\privately funded suborbital space flight, has officially announced the first\\launch date for its manned rocket.",
+        "gold": "Sci/Tech",
+        "pred": "Sports"
+      },
+      {
+        "test_idx": 4,
+        "text": "Calif. Aims to Limit Farm-Related Smog (AP) AP - Southern California's smog-fighting agency went after emissions of the bovine variety Friday, adopting the nation's first rules to reduce air pollution from dairy cow manure.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 7,
+        "text": "FOAFKey: FOAF, PGP, Key Distribution, and Bloom Filters \\\\FOAF/LOAF  and bloom filters have a lot of interesting properties for social\\network and whitelist distribution.\\\\I think we can go one level higher though and include GPG/OpenPGP key\\fingerpring distribution in the FOAF file for simple web-of-trust based key\\distribution.\\\\What if we used FOAF and included the PGP key fingerprint(s) for identities?\\This could mean a lot.  You include the PGP key fingerprints within the FOAF\\file of your direct friends and then include a bloom filter of the PGP key\\fingerprints of your entire whitelist (the source FOAF file would of course need\\to be encrypted ).\\\\Your whitelist would be populated from the social network as your client\\discovered new identit ...\\\\",
+        "gold": "Sci/Tech",
+        "pred": "Sports"
+      },
+      {
+        "test_idx": 8,
+        "text": "E-mail scam targets police chief Wiltshire Police warns about \"phishing\" after its fraud squad chief was targeted.",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 9,
+        "text": "Card fraud unit nets 36,000 cards In its first two years, the UK's dedicated card fraud unit, has recovered 36,000 stolen cards and 171 arrests - and estimates it saved 65m.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 10,
+        "text": "Group to Propose New High-Speed Wireless Format  LOS ANGELES (Reuters) - A group of technology companies  including Texas Instruments Inc. &lt;TXN.N&gt;, STMicroelectronics  &lt;STM.PA&gt; and Broadcom Corp. &lt;BRCM.O&gt;, on Thursday said they  will propose a new wireless networking standard up to 10 times  the speed of the current generation.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 13,
+        "text": "Super ant colony hits Australia A giant 100km colony of ants  which has been discovered in Melbourne, Australia, could threaten local insect species.",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 15,
+        "text": "Teenage T. rex's monster growth Tyrannosaurus rex achieved its massive size due to an enormous growth spurt during its adolescent years.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 18,
+        "text": "Rocking the Cradle of Life When did life begin? One evidential clue stems from the fossil records in Western Australia, although whether these layered sediments are biological or chemical has spawned a spirited debate. Oxford researcher, Nicola McLoughlin, describes some of the issues in contention.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      }
+    ],
+    "transformer_last": [
+      {
+        "test_idx": 0,
+        "text": "Fears for T N pension after talks Unions representing workers at Turner   Newall say they are 'disappointed' after talks with stricken parent firm Federal Mogul.",
+        "gold": "Business",
+        "pred": "Sports"
+      },
+      {
+        "test_idx": 1,
+        "text": "The Race is On: Second Private Team Sets Launch Date for Human Spaceflight (SPACE.com) SPACE.com - TORONTO, Canada -- A second\\team of rocketeers competing for the  #36;10 million Ansari X Prize, a contest for\\privately funded suborbital space flight, has officially announced the first\\launch date for its manned rocket.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 3,
+        "text": "Prediction Unit Helps Forecast Wildfires (AP) AP - It's barely dawn when Mike Fitzpatrick starts his shift with a blur of colorful maps, figures and endless charts, but already he knows what the day will bring. Lightning will strike in places he expects. Winds will pick up, moist places will dry and flames will roar.",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 9,
+        "text": "Card fraud unit nets 36,000 cards In its first two years, the UK's dedicated card fraud unit, has recovered 36,000 stolen cards and 171 arrests - and estimates it saved 65m.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 10,
+        "text": "Group to Propose New High-Speed Wireless Format  LOS ANGELES (Reuters) - A group of technology companies  including Texas Instruments Inc. &lt;TXN.N&gt;, STMicroelectronics  &lt;STM.PA&gt; and Broadcom Corp. &lt;BRCM.O&gt;, on Thursday said they  will propose a new wireless networking standard up to 10 times  the speed of the current generation.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 13,
+        "text": "Super ant colony hits Australia A giant 100km colony of ants  which has been discovered in Melbourne, Australia, could threaten local insect species.",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 15,
+        "text": "Teenage T. rex's monster growth Tyrannosaurus rex achieved its massive size due to an enormous growth spurt during its adolescent years.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 17,
+        "text": "Mars Rovers Relay Images Through Mars Express European Space Agency -- ESAs Mars Express has relayed pictures from one of NASA's Mars rovers for the first time, as part of a set of interplanetary networking demonstrations.     The demonstrations pave the way for future Mars missions to draw on joint interplanetary networking capabilities...",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 18,
+        "text": "Rocking the Cradle of Life When did life begin? One evidential clue stems from the fossil records in Western Australia, although whether these layered sediments are biological or chemical has spawned a spirited debate. Oxford researcher, Nicola McLoughlin, describes some of the issues in contention.",
+        "gold": "Sci/Tech",
+        "pred": "Sports"
+      },
+      {
+        "test_idx": 24,
+        "text": "Rivals Try to Turn Tables on Charles Schwab By MICHAEL LIEDTKE     SAN FRANCISCO (AP) -- With its low prices and iconoclastic attitude, discount stock broker Charles Schwab Corp. (SCH) represented an annoying stone in Wall Street's wing-tipped shoes for decades...",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      }
+    ],
+    "own_frozen_mean": [
+      {
+        "test_idx": 0,
+        "text": "Fears for T N pension after talks Unions representing workers at Turner   Newall say they are 'disappointed' after talks with stricken parent firm Federal Mogul.",
+        "gold": "Business",
+        "pred": "Sci/Tech"
+      },
+      {
+        "test_idx": 1,
+        "text": "The Race is On: Second Private Team Sets Launch Date for Human Spaceflight (SPACE.com) SPACE.com - TORONTO, Canada -- A second\\team of rocketeers competing for the  #36;10 million Ansari X Prize, a contest for\\privately funded suborbital space flight, has officially announced the first\\launch date for its manned rocket.",
+        "gold": "Sci/Tech",
+        "pred": "Sports"
+      },
+      {
+        "test_idx": 4,
+        "text": "Calif. Aims to Limit Farm-Related Smog (AP) AP - Southern California's smog-fighting agency went after emissions of the bovine variety Friday, adopting the nation's first rules to reduce air pollution from dairy cow manure.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 6,
+        "text": "Loosing the War on Terrorism \\\\\"Sven Jaschan, self-confessed author of the Netsky and Sasser viruses, is\\responsible for 70 percent of virus infections in 2004, according to a six-month\\virus roundup published Wednesday by antivirus company Sophos.\"\\\\\"The 18-year-old Jaschan was taken into custody in Germany in May by police who\\said he had admitted programming both the Netsky and Sasser worms, something\\experts at Microsoft confirmed. (A Microsoft antivirus reward program led to the\\teenager's arrest.) During the five months preceding Jaschan's capture, there\\were at least 25 variants of Netsky and one of the port-scanning network worm\\Sasser.\"\\\\\"Graham Cluley, senior technology consultant at Sophos, said it was staggeri ...\\\\",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 8,
+        "text": "E-mail scam targets police chief Wiltshire Police warns about \"phishing\" after its fraud squad chief was targeted.",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 15,
+        "text": "Teenage T. rex's monster growth Tyrannosaurus rex achieved its massive size due to an enormous growth spurt during its adolescent years.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 19,
+        "text": "Storage, servers bruise HP earnings update Earnings per share rise compared with a year ago, but company misses analysts' expectations by a long shot.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 20,
+        "text": "IBM to hire even more new workers By the end of the year, the computing giant plans to have its biggest headcount since 1991.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 24,
+        "text": "Rivals Try to Turn Tables on Charles Schwab By MICHAEL LIEDTKE     SAN FRANCISCO (AP) -- With its low prices and iconoclastic attitude, discount stock broker Charles Schwab Corp. (SCH) represented an annoying stone in Wall Street's wing-tipped shoes for decades...",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 41,
+        "text": "Retailers Vie for Back-To-School Buyers (Reuters) Reuters - Apparel retailers are hoping their\\back-to-school fashions will make the grade among\\style-conscious teens and young adults this fall, but it could\\be a tough sell, with students and parents keeping a tighter\\hold on their wallets.",
+        "gold": "Business",
+        "pred": "Sci/Tech"
+      }
+    ],
+    "glove_frozen_mean": [
+      {
+        "test_idx": 0,
+        "text": "Fears for T N pension after talks Unions representing workers at Turner   Newall say they are 'disappointed' after talks with stricken parent firm Federal Mogul.",
+        "gold": "Business",
+        "pred": "World"
+      },
+      {
+        "test_idx": 1,
+        "text": "The Race is On: Second Private Team Sets Launch Date for Human Spaceflight (SPACE.com) SPACE.com - TORONTO, Canada -- A second\\team of rocketeers competing for the  #36;10 million Ansari X Prize, a contest for\\privately funded suborbital space flight, has officially announced the first\\launch date for its manned rocket.",
+        "gold": "Sci/Tech",
+        "pred": "Sports"
+      },
+      {
+        "test_idx": 4,
+        "text": "Calif. Aims to Limit Farm-Related Smog (AP) AP - Southern California's smog-fighting agency went after emissions of the bovine variety Friday, adopting the nation's first rules to reduce air pollution from dairy cow manure.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 6,
+        "text": "Loosing the War on Terrorism \\\\\"Sven Jaschan, self-confessed author of the Netsky and Sasser viruses, is\\responsible for 70 percent of virus infections in 2004, according to a six-month\\virus roundup published Wednesday by antivirus company Sophos.\"\\\\\"The 18-year-old Jaschan was taken into custody in Germany in May by police who\\said he had admitted programming both the Netsky and Sasser worms, something\\experts at Microsoft confirmed. (A Microsoft antivirus reward program led to the\\teenager's arrest.) During the five months preceding Jaschan's capture, there\\were at least 25 variants of Netsky and one of the port-scanning network worm\\Sasser.\"\\\\\"Graham Cluley, senior technology consultant at Sophos, said it was staggeri ...\\\\",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 8,
+        "text": "E-mail scam targets police chief Wiltshire Police warns about \"phishing\" after its fraud squad chief was targeted.",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 9,
+        "text": "Card fraud unit nets 36,000 cards In its first two years, the UK's dedicated card fraud unit, has recovered 36,000 stolen cards and 171 arrests - and estimates it saved 65m.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 13,
+        "text": "Super ant colony hits Australia A giant 100km colony of ants  which has been discovered in Melbourne, Australia, could threaten local insect species.",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 15,
+        "text": "Teenage T. rex's monster growth Tyrannosaurus rex achieved its massive size due to an enormous growth spurt during its adolescent years.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 19,
+        "text": "Storage, servers bruise HP earnings update Earnings per share rise compared with a year ago, but company misses analysts' expectations by a long shot.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 20,
+        "text": "IBM to hire even more new workers By the end of the year, the computing giant plans to have its biggest headcount since 1991.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      }
+    ],
+    "glove_avg_baseline": [
+      {
+        "test_idx": 4,
+        "text": "Calif. Aims to Limit Farm-Related Smog (AP) AP - Southern California's smog-fighting agency went after emissions of the bovine variety Friday, adopting the nation's first rules to reduce air pollution from dairy cow manure.",
+        "gold": "Sci/Tech",
+        "pred": "World"
+      },
+      {
+        "test_idx": 19,
+        "text": "Storage, servers bruise HP earnings update Earnings per share rise compared with a year ago, but company misses analysts' expectations by a long shot.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 24,
+        "text": "Rivals Try to Turn Tables on Charles Schwab By MICHAEL LIEDTKE     SAN FRANCISCO (AP) -- With its low prices and iconoclastic attitude, discount stock broker Charles Schwab Corp. (SCH) represented an annoying stone in Wall Street's wing-tipped shoes for decades...",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 43,
+        "text": "Spam suspension hits Sohu.com shares (FT.com) FT.com - Shares in Sohu.com, a leading US-listed Chinese internet portal, fell more than 10 per cent on Friday after China's biggest mobile phone network operator imposed a one-year suspension on its multimedia messaging services because of customers being sent spam.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 47,
+        "text": "Dell Exits Low-End China Consumer PC Market  HONG KONG (Reuters) - Dell Inc. &lt;DELL.O&gt;, the world's  largest PC maker, said on Monday it has left the low-end  consumer PC market in China and cut its overall growth target  for the country this year due to stiff competition in the  segment.",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 56,
+        "text": "India's Tata expands regional footprint via NatSteel buyout (AFP) AFP - India's Tata Iron and Steel Company Ltd. took a strategic step to expand its Asian footprint with the announcement it will buy the Asia-Pacific steel operations of Singapore's NatSteel Ltd.",
+        "gold": "World",
+        "pred": "Business"
+      },
+      {
+        "test_idx": 79,
+        "text": "Live: Olympics day four Richard Faulds and Stephen Parry are going for gold for Great Britain on day four in Athens.",
+        "gold": "World",
+        "pred": "Sports"
+      },
+      {
+        "test_idx": 83,
+        "text": "Intel to delay product aimed for high-definition TVs SAN FRANCISCO -- In the latest of a series of product delays, Intel Corp. has postponed the launch of a video display chip it had previously planned to introduce by year end, putting off a showdown with Texas Instruments Inc. in the fast-growing market for high-definition television displays.",
+        "gold": "Business",
+        "pred": "Sci/Tech"
+      },
+      {
+        "test_idx": 88,
+        "text": "U.S. Misses Cut in Olympic 100 Free ATHENS, Greece - Top American sprinters Jason Lezak and Ian Crocker missed the cut in the Olympic 100-meter freestyle preliminaries Tuesday, a stunning blow for a country that had always done well in the event.    Pieter van den Hoogenband of the Netherlands and Australian Ian Thorpe advanced to the evening semifinal a day after dueling teenager Michael Phelps in the 200 freestyle, won by Thorpe...",
+        "gold": "World",
+        "pred": "Sports"
+      },
+      {
+        "test_idx": 89,
+        "text": "Consumers Would Pay In Phone Proposal A proposal backed by a coalition of telephone carriers would cut billions of dollars in fees owed by long-distance companies to regional phone giants but would allow the regional companies to make up some of the difference by raising monthly phone bills for millions of consumers. &lt;FONT face=\"verdana,MS Sans Serif,arial,helvetica\" size=\"-2\"\\ color=\"#666666\"&gt;&lt;B&gt;-The Washington Post&lt;/B&gt;&lt;/FONT&gt;",
+        "gold": "Sci/Tech",
+        "pred": "Business"
+      }
+    ]
+  },
+  "pairwise": {
+    "lstm_right_transformer_wrong": {
+      "count": 664,
+      "examples": [
+        {
+          "test_idx": 28,
+          "text": "Shoppach doesn't appear ready to hit the next level With the weeks dwindling until Jason Varitek enters free agency, the Red Sox continue to carefully monitor Kelly Shoppach , their catcher of the future, in his climb toward the majors. The Sox like most of what they have seen at Triple A Pawtucket from Shoppach, though it remains highly uncertain whether he can make the adjustments at the plate ...",
+          "gold": "Sports",
+          "lstm_pred": "Sports",
+          "transformer_pred": "Sci/Tech"
+        },
+        {
+          "test_idx": 52,
+          "text": "Restive Maldives eases curfew after rounding up dissidents (AFP) AFP - A curfew in the capital of the Maldives was eased but parliament sessions were put off indefinitely and emergency rule continued following last week's riots, officials and residents said.",
+          "gold": "World",
+          "lstm_pred": "World",
+          "transformer_pred": "Business"
+        },
+        {
+          "test_idx": 64,
+          "text": "UN launches 210-million-dollar appeal for flood-hit Bangladesh (AFP) AFP - The United Nations launched an appeal here for 210 million dollars to help flood victims facing \"grave\" food shortages after two-thirds of Bangladesh was submerged, destroying crops and killing more than 700 people.",
+          "gold": "World",
+          "lstm_pred": "World",
+          "transformer_pred": "Business"
+        },
+        {
+          "test_idx": 87,
+          "text": "Fischer's Fiancee: Marriage Plans Genuine (AP) AP - Former chess champion Bobby Fischer's announcement thathe is engaged to a Japanese woman could win him sympathy among Japanese officials and help him avoid deportation to the United States, his fiancee and one of his supporters said Tuesday.",
+          "gold": "World",
+          "lstm_pred": "World",
+          "transformer_pred": "Sports"
+        },
+        {
+          "test_idx": 89,
+          "text": "Consumers Would Pay In Phone Proposal A proposal backed by a coalition of telephone carriers would cut billions of dollars in fees owed by long-distance companies to regional phone giants but would allow the regional companies to make up some of the difference by raising monthly phone bills for millions of consumers. &lt;FONT face=\"verdana,MS Sans Serif,arial,helvetica\" size=\"-2\"\\ color=\"#666666\"&gt;&lt;B&gt;-The Washington Post&lt;/B&gt;&lt;/FONT&gt;",
+          "gold": "Sci/Tech",
+          "lstm_pred": "Sci/Tech",
+          "transformer_pred": "Business"
+        },
+        {
+          "test_idx": 94,
+          "text": "Kederis proclaims innocence Olympic champion Kostas Kederis today left hospital ahead of his date with IOC inquisitors claiming his innocence and vowing:  quot;After the crucifixion comes the resurrection. quot; ...",
+          "gold": "Sports",
+          "lstm_pred": "Sports",
+          "transformer_pred": "World"
+        },
+        {
+          "test_idx": 107,
+          "text": "Iliadis, Tanimoto win judo golds Ilias Iliadis of Greece thrilled the home crowd Tuesday, beating Roman Gontyuk of Ukraine to win the gold medal in the 81-kilogram class. ",
+          "gold": "Sports",
+          "lstm_pred": "Sports",
+          "transformer_pred": "World"
+        },
+        {
+          "test_idx": 122,
+          "text": "AMD Ships Notebook Chips It wasn #39;t the first to go small, and it won #39;t be the biggest producer, but AMD #39;s (Quote, Chart) 64-bit 90-nanometer (nm) chips are expected to make waves in the semiconductor pool. ",
+          "gold": "Sci/Tech",
+          "lstm_pred": "Sci/Tech",
+          "transformer_pred": "Business"
+        },
+        {
+          "test_idx": 136,
+          "text": "Schrder adopts Russian orphan Three-year-old Victoria, from St Petersburg, has been living at the Schrders #39; family home in Hanover in northern Germany for several weeks. ",
+          "gold": "World",
+          "lstm_pred": "World",
+          "transformer_pred": "Sports"
+        },
+        {
+          "test_idx": 139,
+          "text": "Sharon orders 1,000 homes in West Bank Israel announced plans for 1,000 houses in the West Bank yesterday, accelerating the expansion of the settlements. ",
+          "gold": "World",
+          "lstm_pred": "World",
+          "transformer_pred": "Business"
+        }
+      ]
+    },
+    "transformer_right_lstm_wrong": {
+      "count": 966,
+      "examples": [
+        {
+          "test_idx": 1,
+          "text": "The Race is On: Second Private Team Sets Launch Date for Human Spaceflight (SPACE.com) SPACE.com - TORONTO, Canada -- A second\\team of rocketeers competing for the  #36;10 million Ansari X Prize, a contest for\\privately funded suborbital space flight, has officially announced the first\\launch date for its manned rocket.",
+          "gold": "Sci/Tech",
+          "lstm_pred": "Sports",
+          "transformer_pred": "Sci/Tech"
+        },
+        {
+          "test_idx": 5,
+          "text": "Open Letter Against British Copyright Indoctrination in Schools The British Department for Education and Skills (DfES) recently launched a \"Music Manifesto\" campaign, with the ostensible intention of educating the next generation of British musicians. Unfortunately, they also teamed up with the music industry (EMI, and various artists) to make this popular. EMI has apparently negotiated their end well, so that children in our schools will now be indoctrinated about the illegality of downloading music.The ignorance and audacity of this got to me a little, so I wrote an open letter to the DfES about it. Unfortunately, it's pedantic, as I suppose you have to be when writing to goverment representatives. But I hope you find it useful, and perhaps feel inspired to do something similar, if or when the same thing has happened in your area.",
+          "gold": "Sci/Tech",
+          "lstm_pred": "World",
+          "transformer_pred": "Sci/Tech"
+        },
+        {
+          "test_idx": 6,
+          "text": "Loosing the War on Terrorism \\\\\"Sven Jaschan, self-confessed author of the Netsky and Sasser viruses, is\\responsible for 70 percent of virus infections in 2004, according to a six-month\\virus roundup published Wednesday by antivirus company Sophos.\"\\\\\"The 18-year-old Jaschan was taken into custody in Germany in May by police who\\said he had admitted programming both the Netsky and Sasser worms, something\\experts at Microsoft confirmed. (A Microsoft antivirus reward program led to the\\teenager's arrest.) During the five months preceding Jaschan's capture, there\\were at least 25 variants of Netsky and one of the port-scanning network worm\\Sasser.\"\\\\\"Graham Cluley, senior technology consultant at Sophos, said it was staggeri ...\\\\",
+          "gold": "Sci/Tech",
+          "lstm_pred": "World",
+          "transformer_pred": "Sci/Tech"
+        },
+        {
+          "test_idx": 9,
+          "text": "Card fraud unit nets 36,000 cards In its first two years, the UK's dedicated card fraud unit, has recovered 36,000 stolen cards and 171 arrests - and estimates it saved 65m.",
+          "gold": "Sci/Tech",
+          "lstm_pred": "Business",
+          "transformer_pred": "Sci/Tech"
+        },
+        {
+          "test_idx": 10,
+          "text": "Group to Propose New High-Speed Wireless Format  LOS ANGELES (Reuters) - A group of technology companies  including Texas Instruments Inc. &lt;TXN.N&gt;, STMicroelectronics  &lt;STM.PA&gt; and Broadcom Corp. &lt;BRCM.O&gt;, on Thursday said they  will propose a new wireless networking standard up to 10 times  the speed of the current generation.",
+          "gold": "Sci/Tech",
+          "lstm_pred": "Business",
+          "transformer_pred": "Sci/Tech"
+        },
+        {
+          "test_idx": 18,
+          "text": "Rocking the Cradle of Life When did life begin? One evidential clue stems from the fossil records in Western Australia, although whether these layered sediments are biological or chemical has spawned a spirited debate. Oxford researcher, Nicola McLoughlin, describes some of the issues in contention.",
+          "gold": "Sci/Tech",
+          "lstm_pred": "World",
+          "transformer_pred": "Sci/Tech"
+        },
+        {
+          "test_idx": 24,
+          "text": "Rivals Try to Turn Tables on Charles Schwab By MICHAEL LIEDTKE     SAN FRANCISCO (AP) -- With its low prices and iconoclastic attitude, discount stock broker Charles Schwab Corp. (SCH) represented an annoying stone in Wall Street's wing-tipped shoes for decades...",
+          "gold": "Sci/Tech",
+          "lstm_pred": "World",
+          "transformer_pred": "Sci/Tech"
+        },
+        {
+          "test_idx": 33,
+          "text": "Man Sought  #36;50M From McGreevey, Aides Say (AP) AP - The man who claims Gov. James E. McGreevey sexually harassed him was pushing for a cash settlement of up to  #36;50 million before the governor decided to announce that he was gay and had an extramarital affair, sources told The Associated Press.",
+          "gold": "World",
+          "lstm_pred": "Sports",
+          "transformer_pred": "World"
+        },
+        {
+          "test_idx": 41,
+          "text": "Retailers Vie for Back-To-School Buyers (Reuters) Reuters - Apparel retailers are hoping their\\back-to-school fashions will make the grade among\\style-conscious teens and young adults this fall, but it could\\be a tough sell, with students and parents keeping a tighter\\hold on their wallets.",
+          "gold": "Business",
+          "lstm_pred": "Sci/Tech",
+          "transformer_pred": "Business"
+        },
+        {
+          "test_idx": 65,
+          "text": "Indian state rolls out wireless broadband Government in South Indian state of Kerala sets up wireless kiosks as part of initiative to bridge digital divide.",
+          "gold": "Sci/Tech",
+          "lstm_pred": "Business",
+          "transformer_pred": "Sci/Tech"
+        }
+      ]
+    },
+    "both_wrong": 1060
+  }
+}

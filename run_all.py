@@ -88,7 +88,8 @@ def main() -> None:
     if stage == "generation":
         P.stage_generation(cfg, smoke, device, log)
     if stage == "part3":
-        P.stage_part3(cfg, smoke, device, log)
+        for sd in (args.seeds or [0]):
+            P.stage_part3(cfg, smoke, device, log, seed=sd)
     if stage == "benchmark":
         P.stage_benchmark(cfg, smoke, device, log)
     if stage == "report":

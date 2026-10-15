@@ -38,6 +38,9 @@ Mean ± std over seeds [0] for neural models ("(n=k)" marks rows with fewer fini
 - [OBSERVATION] Test-perplexity ranking (best first): trigram (784.1) < RNN (1377.0) < LSTM (1636.5) < Transformer (20193.5).
 - [OBSERVATION] Best epochs per seed: RNN [1]; LSTM [1]; Transformer [1]. Stopping reasons: RNN ['max_epochs']; LSTM ['max_epochs']; Transformer ['max_epochs'].
 - [OBSERVATION] Between the LSTM and the Transformer, the LSTM reaches the lower test perplexity.
+- [OBSERVATION] RNN: every seed hit the 1-epoch limit with its best epoch at or near the end ([1]), i.e. it was still improving; its result is limited by the training budget, not converged.
+- [OBSERVATION] LSTM: every seed hit the 1-epoch limit with its best epoch at or near the end ([1]), i.e. it was still improving; its result is limited by the training budget, not converged.
+- [OBSERVATION] Transformer: every seed hit the 1-epoch limit with its best epoch at or near the end ([1]), i.e. it was still improving; its result is limited by the training budget, not converged.
 - [HYPOTHESIS] Differences between neural models may reflect inductive bias (recurrence vs attention), the small data size (2M tokens) favouring the more constrained model, the fixed 128-token context, or per-architecture LR/epoch budget; these runs do not separate these factors.
 - [HYPOTHESIS] The output layer (256×V) dominates the parameter count of every neural model, so total parameters say little about the capacity of the sequence core.
 - [OBSERVATION] Fill in: overfitting signs (train loss keeps falling while val loss rises after the best epoch) per model, from the loss-curve figure.
@@ -96,7 +99,7 @@ Random-trainable row reuses the Part I LSTM runs. Coverage is over non-<pad> typ
 
 ## 4. Part III — downstream classification (AG News)
 
-Frozen seed-0 LMs; each article (converted to WikiText conventions, truncated to 128 tokens) is encoded and the last-layer states are mean-pooled over non-pad positions (main comparison: LSTM vs Transformer). Classifier: StandardScaler + logistic regression, C chosen on validation accuracy, fitted on the 8k train set, test evaluated once.
+Frozen LMs (main comparison on the seed-0 checkpoints, repeated with the same protocol on the seed-1 and seed-2 checkpoints); each article (converted to WikiText conventions, truncated to 128 tokens) is encoded and the last-layer states are mean-pooled over non-pad positions (main comparison: LSTM vs Transformer). Classifier: StandardScaler + logistic regression, C chosen on validation accuracy, fitted on the 8k train set, test evaluated once.
 
 | split | tokens (converted) | OOV before | OOV after |
 |---|---|---|---|
@@ -133,7 +136,7 @@ AG News: 8,000 train / 2,000 val (stratified from official train, seed 0), 7,600
 
 ## 5. Cross-part discussion, limitations, lessons
 
-- Limitations: single small corpus (2M tokens); one LR sweep of 2 epochs per architecture; laptop GPU timing (thermal throttling possible); GloVe trained on Wikipedia 2014 + Gigaword may overlap WikiText test text; Part III uses frozen features and a linear classifier only; seed-0 checkpoints only for generation and Part III.
+- Limitations: single small corpus (2M tokens); one LR sweep of 2 epochs per architecture; laptop GPU timing (thermal throttling possible); GloVe trained on Wikipedia 2014 + Gigaword may overlap WikiText test text; Part III uses frozen features and a linear classifier only; generated text from seed-0 checkpoints only; LRs chosen by a 2-epoch sweep (favours fast early progress); models that hit the epoch limit are not converged.
 
 ## Reproducibility
 

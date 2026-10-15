@@ -300,11 +300,17 @@ def stage_generation(cfg, smoke, device, log, seed=0):
         log(f"saved {out_path}")
 
 
+def part3_dir(root: Path, seed: int) -> Path:
+    """Seed-0 Part III results live in results/part3/ (the LOCKED main comparison); additional LM seeds in
+    results/part3/seed<k>/ (same protocol, added on request, DECISIONS.md)."""
+    return root / "part3" if seed == 0 else root / "part3" / f"seed{seed}"
+
+
 def stage_part3(cfg, smoke, device, log, seed=0, optional=True):
     from . import part3 as p3
 
     root = results_root(cfg, smoke)
-    out = root / "part3"
+    out = part3_dir(root, seed)
     out.mkdir(parents=True, exist_ok=True)
     rlog = Logger(out / "log.txt")
     start = now_str()
@@ -320,7 +326,7 @@ def stage_part3(cfg, smoke, device, log, seed=0, optional=True):
     tok_after = {s: [p3.convert_tokens(t, vs) for t in ag[s]["text"]] for s in ag}
     oov = {s: {"before": p3.oov_rate(tok_before[s], vs), "after": p3.oov_rate(tok_after[s], vs)} for s in ag}
     trunc = {s: float(np.mean([len(t) > pc["max_len"] for t in tok_after[s]])) for s in ag}
-    rlog("OOV rate before/after conversion: " + ", ".join(
+    rlog(f"Part III with LM seed {seed}. OOV rate before/after conversion: " + ", ".join(
         f"{s} {oov[s]['before']['oov_rate']:.4f}->{oov[s]['after']['oov_rate']:.4f}" for s in ag)
          + f"; truncated fraction {trunc}")
     seqs = {s: p3.encode_texts(tok_after[s], vocab, pc["max_len"]) for s in ag}
@@ -388,12 +394,16 @@ def stage_part3(cfg, smoke, device, log, seed=0, optional=True):
         if variant in VARIANTS:
             m = load_json(run_dir(root, variant, seed) / "metrics.json")
             ppl = m["final"]["test"]["ppl"]
-        pair.append({"representation": name, "lm_test_ppl_seed0": ppl, "test_acc": reps[name]["test_acc"],
-                     "test_macro_f1": reps[name]["test_macro_f1"]})
+        rec = {"representation": name, "lm_seed": seed, "lm_test_ppl": ppl, "test_acc": reps[name]["test_acc"],
+               "test_macro_f1": reps[name]["test_macro_f1"]}
+        if seed == 0:
+            rec["lm_test_ppl_seed0"] = ppl  # key used by the original seed-0 results.json
+        pair.append(rec)
     res = {"labels": p3.LABELS, "split_sizes": {s: len(ag[s]["text"]) for s in ag},
            "class_counts": {s: np.bincount(y[s], minlength=4).tolist() for s in ag},
            "oov": oov, "truncated_fraction": trunc, "main_comparison": main, "representations": reps,
-           "ppl_vs_downstream": pair, "lm_checkpoints": lm_info,
+           "ppl_vs_downstream": pair, "lm_checkpoints": lm_info, "lm_seed": seed,
+           "test_predictions": {k: v.tolist() for k, v in preds.items()},
            "split_indices": {s: ag[s]["orig_idx"] for s in ("train", "val")},
            "conversion_examples": [{"raw": ag["test"]["text"][i], "converted": " ".join(tok_after["test"][i])}
                                    for i in range(5)],

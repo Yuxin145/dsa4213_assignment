@@ -14,3 +14,62 @@
 [2026-10-11T03:10:25] profile lstm: {'epoch_time_s': 55.89562499999738, 'train_time_s': 53.646748500003014, 'peak_mem_mb': 1803.81689453125, 'micro_batch': 32, 'steps': 507, 'train_loss': 7.103844407195536, 'val_loss': 6.542401389874322, 'skipped_steps': 0}
 [2026-10-11T03:11:22] profile transformer: {'epoch_time_s': 54.61351750000176, 'train_time_s': 52.68480329999875, 'peak_mem_mb': 1884.52099609375, 'micro_batch': 32, 'steps': 507, 'train_loss': 7.083338945209898, 'val_loss': 6.046674601246383, 'skipped_steps': 0}
 [2026-10-11T03:11:22] run_all finished
+[2026-10-11T03:20:29] run_all stage=full smoke=False device=cuda python=D:\anaconda3\envs\dsa4213\python.exe
+[2026-10-11T03:20:37] data: V=28913 vocab_sha256=86014eda035e train=2075677 tok (unk 0.0263), validation=216347 tok (unk 0.0542), test=244102 tok (unk 0.0623); chunks train/val/test = [16217, 1691, 1908]
+[2026-10-11T03:20:37] ngram: DONE, skipping
+[2026-10-11T03:20:37] train rnn seed 0 -> D:\Users\peter\Desktop\dsa4213_a1\results\part1\rnn\seed0
+[2026-10-11T03:54:00]   rnn seed 0: best epoch 40 (max_epochs), val ppl 166.83, test ppl 155.02, time 32.9 min
+[2026-10-11T03:54:00] train lstm seed 0 -> D:\Users\peter\Desktop\dsa4213_a1\results\part1\lstm\seed0
+[2026-10-11T04:07:57]   lstm seed 0: best epoch 11 (early_stopping), val ppl 143.17, test ppl 133.43, time 13.7 min
+[2026-10-11T04:07:57] train transformer seed 0 -> D:\Users\peter\Desktop\dsa4213_a1\results\part1\transformer\seed0
+[2026-10-11T04:32:58]   transformer seed 0: best epoch 24 (early_stopping), val ppl 143.05, test ppl 135.51, time 24.7 min
+[2026-10-11T04:32:58] train own_frozen seed 0 -> D:\Users\peter\Desktop\dsa4213_a1\results\part2\own_frozen\seed0
+[2026-10-11T04:48:00]   own_frozen seed 0: best epoch 13 (early_stopping), val ppl 132.55, test ppl 125.43, time 14.8 min
+[2026-10-11T04:48:00] train glove_frozen seed 0 -> D:\Users\peter\Desktop\dsa4213_a1\results\part2\glove_frozen\seed0
+[2026-10-11T05:02:52]   glove_frozen seed 0: best epoch 13 (early_stopping), val ppl 141.94, test ppl 133.47, time 14.7 min
+[2026-10-11T05:03:02] generation ngram: greedy d1=0.032 rep3=0.892; sample_t0.8_k40 d1=0.316 rep3=0.004
+[2026-10-11T05:03:04] generation rnn: greedy d1=0.084 rep3=0.579; sample_t0.8_k40 d1=0.364 rep3=0.025
+[2026-10-11T05:03:06] generation lstm: greedy d1=0.176 rep3=0.508; sample_t0.8_k40 d1=0.388 rep3=0.062
+[2026-10-11T05:03:09] generation transformer: greedy d1=0.204 rep3=0.287; sample_t0.8_k40 d1=0.456 rep3=0.021
+[2026-10-11T05:03:09] saved D:\Users\peter\Desktop\dsa4213_a1\results\part1\generations.json
+[2026-10-11T05:03:12] generation own_frozen: greedy d1=0.128 rep3=0.654; sample_t0.8_k40 d1=0.384 rep3=0.054
+[2026-10-11T05:03:14] generation glove_frozen: greedy d1=0.124 rep3=0.654; sample_t0.8_k40 d1=0.352 rep3=0.042
+[2026-10-11T05:03:14] saved D:\Users\peter\Desktop\dsa4213_a1\results\part2\generations.json
+[2026-10-11T05:04:42] budget check after seed 0: sweep 0.93 h + seed-0 runs 1.68 h (rnn 0.55, lstm 0.23, transformer 0.41, own_frozen 0.25, glove_frozen 0.24) + projected seeds [1, 2] 3.36 h = 5.97 h vs budget 8.0 h -> WITHIN
+[2026-10-11T05:04:42] train rnn seed 1 -> D:\Users\peter\Desktop\dsa4213_a1\results\part1\rnn\seed1
+[2026-10-11T05:38:15]   rnn seed 1: best epoch 39 (max_epochs), val ppl 168.23, test ppl 156.74, time 33.1 min
+[2026-10-11T05:38:15] train lstm seed 1 -> D:\Users\peter\Desktop\dsa4213_a1\results\part1\lstm\seed1
+[2026-10-11T05:53:29]   lstm seed 1: best epoch 13 (early_stopping), val ppl 147.89, test ppl 138.67, time 15.0 min
+[2026-10-11T05:53:29] train transformer seed 1 -> D:\Users\peter\Desktop\dsa4213_a1\results\part1\transformer\seed1
+[2026-10-11T06:21:13]   transformer seed 1: best epoch 27 (early_stopping), val ppl 141.43, test ppl 133.83, time 27.4 min
+[2026-10-11T06:21:13] train own_frozen seed 1 -> D:\Users\peter\Desktop\dsa4213_a1\results\part2\own_frozen\seed1
+[2026-10-11T06:34:17]   own_frozen seed 1: best epoch 11 (early_stopping), val ppl 133.33, test ppl 126.33, time 12.9 min
+[2026-10-11T06:34:17] train glove_frozen seed 1 -> D:\Users\peter\Desktop\dsa4213_a1\results\part2\glove_frozen\seed1
+[2026-10-11T06:50:07]   glove_frozen seed 1: best epoch 14 (early_stopping), val ppl 144.62, test ppl 135.55, time 15.6 min
+[2026-10-11T06:50:07] train rnn seed 2 -> D:\Users\peter\Desktop\dsa4213_a1\results\part1\rnn\seed2
+[2026-10-11T07:23:44]   rnn seed 2: best epoch 39 (max_epochs), val ppl 168.79, test ppl 156.90, time 33.2 min
+[2026-10-11T07:23:44] train lstm seed 2 -> D:\Users\peter\Desktop\dsa4213_a1\results\part1\lstm\seed2
+[2026-10-11T07:36:18]   lstm seed 2: best epoch 10 (early_stopping), val ppl 142.52, test ppl 134.75, time 12.4 min
+[2026-10-11T07:36:18] train transformer seed 2 -> D:\Users\peter\Desktop\dsa4213_a1\results\part1\transformer\seed2
+[2026-10-11T07:53:56]   transformer seed 2: best epoch 16 (early_stopping), val ppl 143.40, test ppl 136.24, time 17.4 min
+[2026-10-11T07:53:56] train own_frozen seed 2 -> D:\Users\peter\Desktop\dsa4213_a1\results\part2\own_frozen\seed2
+[2026-10-11T08:06:07]   own_frozen seed 2: best epoch 10 (early_stopping), val ppl 134.31, test ppl 126.88, time 12.0 min
+[2026-10-11T08:06:07] train glove_frozen seed 2 -> D:\Users\peter\Desktop\dsa4213_a1\results\part2\glove_frozen\seed2
+[2026-10-11T08:23:09]   glove_frozen seed 2: best epoch 15 (early_stopping), val ppl 148.93, test ppl 140.60, time 16.8 min
+[2026-10-11T08:26:51] saved D:\Users\peter\Desktop\dsa4213_a1\results\part1\benchmark.json
+[2026-10-11T08:26:51] running D:\anaconda3\envs\dsa4213\python.exe D:\Users\peter\Desktop\dsa4213_a1\scripts\make_tables.py
+[2026-10-11T08:26:55] running D:\anaconda3\envs\dsa4213\python.exe D:\Users\peter\Desktop\dsa4213_a1\scripts\make_figures.py
+[2026-10-11T08:27:02] running D:\anaconda3\envs\dsa4213\python.exe D:\Users\peter\Desktop\dsa4213_a1\scripts\make_report.py
+[2026-10-11T08:27:05] run_all finished
+[2026-10-15T18:38:49] run_all stage=part3 smoke=False device=cuda python=D:\anaconda3\envs\dsa4213\python.exe
+[2026-10-15T18:46:39] run_all finished
+[2026-10-15T18:49:18] run_all stage=report smoke=False device=cuda python=D:\anaconda3\envs\dsa4213\python.exe
+[2026-10-15T18:49:18] running D:\anaconda3\envs\dsa4213\python.exe D:\Users\peter\Desktop\dsa4213_a1\scripts\make_tables.py
+[2026-10-15T18:49:27] running D:\anaconda3\envs\dsa4213\python.exe D:\Users\peter\Desktop\dsa4213_a1\scripts\make_figures.py
+[2026-10-15T18:49:43] running D:\anaconda3\envs\dsa4213\python.exe D:\Users\peter\Desktop\dsa4213_a1\scripts\make_report.py
+[2026-10-15T18:49:48] run_all finished
+[2026-10-15T18:50:33] run_all stage=report smoke=False device=cuda python=D:\anaconda3\envs\dsa4213\python.exe
+[2026-10-15T18:50:33] running D:\anaconda3\envs\dsa4213\python.exe D:\Users\peter\Desktop\dsa4213_a1\scripts\make_tables.py
+[2026-10-15T18:50:45] running D:\anaconda3\envs\dsa4213\python.exe D:\Users\peter\Desktop\dsa4213_a1\scripts\make_figures.py
+[2026-10-15T18:51:02] running D:\anaconda3\envs\dsa4213\python.exe D:\Users\peter\Desktop\dsa4213_a1\scripts\make_report.py
+[2026-10-15T18:51:07] run_all finished

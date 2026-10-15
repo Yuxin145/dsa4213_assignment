@@ -1,0 +1,233 @@
+{
+  "settings": {
+    "greedy": {
+      "mode": "greedy"
+    },
+    "sample_t0.8_k40": {
+      "mode": "sample",
+      "temperature": 0.8,
+      "top_k": 40
+    }
+  },
+  "max_new_tokens": 50,
+  "sample_seed_base": 1234,
+  "lm_seed": 0,
+  "models": {
+    "lstm": {
+      "source": {
+        "checkpoint": "results/part1/lstm/seed0/best.pt",
+        "checkpoint_sha256": "8dff431eff82553fbd6471126b2b1cc2942c3c00d911b7567f30872322f419be",
+        "best_epoch": 11
+      },
+      "greedy": {
+        "continuations": [
+          {
+            "prompt": "the history of the city began in the",
+            "text": "early 20th century . the <unk> of the <unk> of the <unk> , the <unk> of the <unk> , was the first of the <unk> , and the <unk> of the <unk> . the <unk> of the <unk> of the <unk> , the <unk> of the <unk> , was the"
+          },
+          {
+            "prompt": "in 1995 , the band released their second album",
+            "text": ", \" the wave \" , and \" the wave \" was released on november 11 , 2005 . the album was released on november 11 , 2005 . the album was released on november 11 , 2005 . the album was released on november 11 , 2005 . the"
+          },
+          {
+            "prompt": "the species is found in the forests of",
+            "text": "the <unk> . the <unk> is a <unk> , and the <unk> <unk> is a <unk> , and the <unk> <unk> . the <unk> is a <unk> , and the <unk> <unk> <unk> . the <unk> is a <unk> , and the <unk> <unk> <unk> . the <unk> is a"
+          },
+          {
+            "prompt": "during the second world war , the ship was",
+            "text": "commissioned by the austro @-@ hungarian navy , and the ship was decommissioned in the austro @-@ hungarian navy . <eos> = = = uss zrínyi = = = <eos> the ship was assigned to the austro @-@ hungarian navy , and the ship was decommissioned in the austro @-@"
+          },
+          {
+            "prompt": "the game received positive reviews from critics , who",
+            "text": "was the first game to be released in the united kingdom . the episode was released on november 25 , 2007 . the episode was written by the episode , and the first episode of the episode . the episode was written by the episode , and the first episode"
+          }
+        ],
+        "metrics": {
+          "n_tokens": 250,
+          "distinct_1": 0.176,
+          "distinct_2": 0.32653061224489793,
+          "repeated_trigram_rate": 0.5083333333333333,
+          "unk_rate": 0.128
+        }
+      },
+      "sample_t0.8_k40": {
+        "continuations": [
+          {
+            "prompt": "the history of the city began in the",
+            "text": "<unk> . the earliest neolithic in the minnesota river <unk> and <unk> ( asi ) in the south , were a <unk> @-@ owned name , although the missouri river has been now known as a local <unk> in the <unk> <unk> . the <unk> in the <unk> of the"
+          },
+          {
+            "prompt": "in 1995 , the band released their second album",
+            "text": ", \" the show 's johnny <unk> \" by clarkson — \" my boo \" , and also directed songs with the album 's title . the album was featured on the dvd , the song \" <unk> of <unk> \" . bono released the song for the album by"
+          },
+          {
+            "prompt": "the species is found in the forests of",
+            "text": "the missouri . in the same season , the island have been the only @-@ day pre @-@ <unk> of the missouri in the north west , and the <unk> is a \" big <unk> \" , but a <unk> of the missouri river watershed . in the watershed ,"
+          },
+          {
+            "prompt": "during the second world war , the ship was",
+            "text": "commissioned in july , while markgraf participated in the military navy service at the cape . when she escorted the ship in mid @-@ december , he participated on a fleet for the first division of the austro @-@ hungarian navy and the <unk> of the austro @-@ hungarian navy"
+          },
+          {
+            "prompt": "the game received positive reviews from critics , who",
+            "text": "claimed the game 's graphics to that was \" the worst <unk> of the game \" . <eos> <unk> <unk> <unk> , <unk> , <unk> , <unk> @-@ <unk> of his \" <unk> , and <unk> \" and one of the game , a few years of <unk> of the"
+          }
+        ],
+        "metrics": {
+          "n_tokens": 250,
+          "distinct_1": 0.388,
+          "distinct_2": 0.726530612244898,
+          "repeated_trigram_rate": 0.0625,
+          "unk_rate": 0.112
+        }
+      }
+    },
+    "own_frozen": {
+      "source": {
+        "checkpoint": "results/part2/own_frozen/seed0/best.pt",
+        "checkpoint_sha256": "d8b398e68c6d687cda247b1fa9851d8e58d366c156bbb98988d46f7343197276",
+        "best_epoch": 13
+      },
+      "greedy": {
+        "continuations": [
+          {
+            "prompt": "the history of the city began in the",
+            "text": "early 19th century , and the new york times was the first of the new york times . the <unk> of the <unk> <unk> , the <unk> , was the first of the <unk> <unk> , the <unk> <unk> , <unk> <unk> , <unk> <unk> , <unk> <unk> , <unk>"
+          },
+          {
+            "prompt": "in 1995 , the band released their second album",
+            "text": "in the united states , and the album 's accompanying album , \" <unk> \" , \" <unk> \" , \" <unk> \" , \" <unk> \" , \" <unk> \" , \" <unk> \" , \" <unk> \" , \" <unk> \" , \" <unk> \" , \" <unk>"
+          },
+          {
+            "prompt": "the species is found in the forests of",
+            "text": "the <unk> <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> , <unk> ,"
+          },
+          {
+            "prompt": "during the second world war , the ship was",
+            "text": "assigned to the british navy , and the ship was assigned to the british navy . <eos> = = = sms = = = <eos> the ship was assigned to the british navy , and was assigned to the british navy , and was assigned to the british navy ,"
+          },
+          {
+            "prompt": "the game received positive reviews from critics , who",
+            "text": "praised the game 's \" <unk> \" , and praised the game 's \" <unk> \" . he praised the game 's \" <unk> \" , and praised the game 's \" <unk> \" , and praised the game 's \" <unk> \" , and praised the game 's \""
+          }
+        ],
+        "metrics": {
+          "n_tokens": 250,
+          "distinct_1": 0.128,
+          "distinct_2": 0.24489795918367346,
+          "repeated_trigram_rate": 0.6541666666666667,
+          "unk_rate": 0.22
+        }
+      },
+      "sample_t0.8_k40": {
+        "continuations": [
+          {
+            "prompt": "the history of the city began in the",
+            "text": "1860s . the town 's population was the first <unk> in the united states , although the population of the population of population in 1954 , although the population was rejected by the united states . <eos> the government had been established to the <unk> in the <unk> of the"
+          },
+          {
+            "prompt": "in 1995 , the band released their second album",
+            "text": "of the album 's first single tour . by 1975 , beyoncé performed for the album from the final album with the album 's two music , and for example , the breeders @-@ <unk> of the <unk> arena in japan . this is also released in japan on august"
+          },
+          {
+            "prompt": "the species is found in the forests of",
+            "text": "the <unk> . in addition , <unk> are called <unk> , that the spores are slightly in the <unk> of the <unk> in the summer and boreal . <eos> the fungus grows from the <unk> <unk> , but a <unk> of the <unk> are <unk> . in the <unk> ,"
+          },
+          {
+            "prompt": "during the second world war , the ship was",
+            "text": "made in a long @-@ year stint of the <unk> of the german war with admiral <unk> <unk> . the ship took to the french fleet , where she was the first vessel to see the british convoy , and the rest of the war of the battle fleet ."
+          },
+          {
+            "prompt": "the game received positive reviews from critics , who",
+            "text": "gave the game as an \" <unk> \" . <eos> = = background = = <eos> = = early career = = <eos> the game 's next series was composed as a single , but it was a part of game 's previous game . the game 's release began"
+          }
+        ],
+        "metrics": {
+          "n_tokens": 250,
+          "distinct_1": 0.384,
+          "distinct_2": 0.7224489795918367,
+          "repeated_trigram_rate": 0.05416666666666667,
+          "unk_rate": 0.08
+        }
+      }
+    },
+    "glove_frozen": {
+      "source": {
+        "checkpoint": "results/part2/glove_frozen/seed0/best.pt",
+        "checkpoint_sha256": "e7c00fbb889ff03d0e4fe2c282466f68a4cb9e478ef584804cc3312eec52ade8",
+        "best_epoch": 13
+      },
+      "greedy": {
+        "continuations": [
+          {
+            "prompt": "the history of the city began in the",
+            "text": "late 19th century . the <unk> of the <unk> was built in the 1860s , and the <unk> of the <unk> <unk> , the <unk> of the <unk> , and the <unk> of the <unk> <unk> , which was built in the 1860s . <eos> = = = <unk> ="
+          },
+          {
+            "prompt": "in 1995 , the band released their second album",
+            "text": ", and the album was released on the billboard hot 100 . <eos> = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+          },
+          {
+            "prompt": "the species is found in the forests of",
+            "text": "the <unk> . <eos> = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+          },
+          {
+            "prompt": "during the second world war , the ship was",
+            "text": "the first ship to be built in the united states . the ship was the first ship to be built in the united states , and the british navy was the first ship to the united states navy . the ship was the first ship to the united states navy"
+          },
+          {
+            "prompt": "the game received positive reviews from critics , who",
+            "text": "was the first game to be the first game to be the first game to be the first game to be the first game to be the first game to be the first game to be the first game to be the first game to be the first game to"
+          }
+        ],
+        "metrics": {
+          "n_tokens": 250,
+          "distinct_1": 0.124,
+          "distinct_2": 0.23265306122448978,
+          "repeated_trigram_rate": 0.6541666666666667,
+          "unk_rate": 0.048
+        }
+      },
+      "sample_t0.8_k40": {
+        "continuations": [
+          {
+            "prompt": "the history of the city began in the",
+            "text": "1860s . the first day in september 1911 , <unk> and <unk> ( <unk> ) in the 1880s , the <unk> <unk> <unk> , and a house of a <unk> which was opened in the 18th century , the <unk> <unk> <unk> ( the <unk> in the <unk> of <unk>"
+          },
+          {
+            "prompt": "in 1995 , the band released their second album",
+            "text": "of the album \" my face of the year \" — that it was one of the first chart in the uk dance chart . <eos> the album was featured on the united states on february 30 , 2013 , while the united states became a digital of the chart"
+          },
+          {
+            "prompt": "the species is found in the forests of",
+            "text": "the forest . in this same year , the population population that the amount of kakapo was a <unk> of the <unk> in their respective @-@ scale areas , the first brood , the <unk> <unk> , was a <unk> of the <unk> of the river , but also known"
+          },
+          {
+            "prompt": "during the second world war , the ship was",
+            "text": "made in a raid @-@ down <unk> of the <unk> river . the <unk> of the fleet <unk> their <unk> , <unk> to the french frigate , where she was the first vessel to see when it spent out to the rest of <unk> and <unk> , and the armstrong"
+          },
+          {
+            "prompt": "the game received positive reviews from critics , who",
+            "text": "played the game . <unk> hatfield that was \" the most <unk> 's time @-@ known to the <unk> \" . the game 's <unk> 's \" @-@ watched of his \" and \" fantasy \" game of one game game game , a few years of <unk> of the"
+          }
+        ],
+        "metrics": {
+          "n_tokens": 250,
+          "distinct_1": 0.352,
+          "distinct_2": 0.746938775510204,
+          "repeated_trigram_rate": 0.041666666666666664,
+          "unk_rate": 0.128
+        }
+      }
+    }
+  },
+  "manifest": {
+    "start": "2026-10-11T05:02:52",
+    "end": "2026-10-11T05:03:14",
+    "git_commit": "c35c63ce120df28ad767053d65aa748eb2d2e5b4",
+    "config_hash": "77b4ce32a1a1a489",
+    "seed": 0,
+    "hardware": "Windows 11; CPU: Intel64 Family 6 Model 186 Stepping 2, GenuineIntel; torch 2.14.1+cu132; GPU: NVIDIA GeForce RTX 3050 4GB Laptop GPU",
+    "log_file": null
+  }
+}

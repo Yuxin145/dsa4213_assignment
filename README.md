@@ -52,8 +52,24 @@ Word2Vec seed 0 (workers 1); AG News split seed 0; generation sampling seed 1234
 
 ## Outputs
 - `results/tables/*.md|csv` (Part I/II/III tables), `figures/*.png|pdf`, `report/draft.md`.
-- `results/part1/generations.json`, `results/part2/generations.json`, `results/part1/benchmark.json`,
+- `results/part1/generations.json`, `results/part2/generations.json`, `results/part1/benchmark.json`, `results/part3/seed{1,2}/`,
   `results/part3/results.json`, `results/part3/errors.json`, `results/part2/embeddings/*_info.json`.
 
-## Actual runtimes
-See `VERIFICATION.md` (filled from the run logs after the runs complete).
+## Actual runtimes (from the run logs; laptop above, performance mode, otherwise idle)
+| step | time | source |
+|---|---|---|
+| LR sweep (12 runs × 2 epochs, GPU) | 0.93 h (partly while the GPU was throttling) | `results/lr_sweep/selected.json` |
+| Trigram counts + λ grid search (CPU) | 42 s + 19 s | `results/part1/ngram/log.txt` |
+| Own Word2Vec (CPU, 1 worker) | 403 s | `results/part2/embeddings/own_frozen_info.json` |
+| `run_all.py --stage full` (all 15 LM runs, generation, Part III seed 0, benchmarks, report) | 5 h 07 min wall clock (2026-10-11 03:20 → 08:27) | `results/run_all_log.txt` |
+| — RNN per run (40 epochs, hit the limit) | 32.9–33.2 min | `results/part1/rnn/seed*/metrics.json` |
+| — LSTM per run (13–16 epochs, early stopping) | 12.4–15.0 min | `results/part1/lstm/seed*/` |
+| — Transformer per run (19–30 epochs, early stopping) | 17.4–27.4 min | `results/part1/transformer/seed*/` |
+| — LSTM + own W2V / + GloVe per run | 12.0–14.8 / 14.7–16.8 min | `results/part2/*/seed*/` |
+| — total LM training GPU time (15 runs) | 4.94 h (+ 0.93 h sweep = 5.87 h of the 8 h budget) | metrics.json `total_time_s` |
+| Part III on seed-1 and seed-2 checkpoints (`--stage part3 --seeds 1 2`) | ~3.5 min per seed | `logs/part3_seeds12.log` |
+| Inference benchmarks | 4 min | `results/part1/benchmark.json` |
+
+Part III on additional seeds: `python run_all.py --stage part3 --seeds 1 2` writes `results/part3/seed1/` and
+`results/part3/seed2/`; `python run_all.py --stage report` aggregates them (`results/tables/part3_seeds.md`,
+`part3_pairwise.md`, `part3_rank_seeds.md`).

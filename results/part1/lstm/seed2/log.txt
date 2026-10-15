@@ -1,0 +1,16 @@
+[2026-10-11T07:23:44] START arch=lstm seed=2 lr=0.01 device=cuda amp=True micro_batch=32 params={'input_embedding': 2891300, 'core': 892928, 'output_layer': 7430641, 'total': 11214869, 'trainable': 11214869, 'frozen': 0}
+[2026-10-11T07:24:41] epoch   1 | train 7.3303 | val 6.4203 ppl 614.20 | 56.8s (cum 0.9 min) | lr 1.00e-02 | peak 1804 MB | skipped 0 *
+[2026-10-11T07:25:38] epoch   2 | train 6.2506 | val 5.6083 ppl 272.68 | 56.4s (cum 1.9 min) | lr 1.00e-02 | peak 1804 MB | skipped 0 *
+[2026-10-11T07:26:36] epoch   3 | train 5.7161 | val 5.3414 ppl 208.80 | 56.6s (cum 2.8 min) | lr 1.00e-02 | peak 1804 MB | skipped 0 *
+[2026-10-11T07:27:34] epoch   4 | train 5.4381 | val 5.2057 ppl 182.30 | 57.4s (cum 3.8 min) | lr 1.00e-02 | peak 1804 MB | skipped 0 *
+[2026-10-11T07:28:31] epoch   5 | train 5.2520 | val 5.1130 ppl 166.17 | 57.3s (cum 4.7 min) | lr 1.00e-02 | peak 1804 MB | skipped 0 *
+[2026-10-11T07:29:29] epoch   6 | train 5.1039 | val 5.0596 ppl 157.52 | 57.4s (cum 5.7 min) | lr 1.00e-02 | peak 1804 MB | skipped 0 *
+[2026-10-11T07:30:27] epoch   7 | train 4.9851 | val 5.0237 ppl 151.98 | 57.2s (cum 6.7 min) | lr 1.00e-02 | peak 1804 MB | skipped 0 *
+[2026-10-11T07:31:25] epoch   8 | train 4.8887 | val 4.9973 ppl 148.02 | 57.5s (cum 7.6 min) | lr 1.00e-02 | peak 1804 MB | skipped 0 *
+[2026-10-11T07:32:23] epoch   9 | train 4.8066 | val 4.9768 ppl 145.01 | 57.2s (cum 8.6 min) | lr 1.00e-02 | peak 1804 MB | skipped 0 *
+[2026-10-11T07:33:21] epoch  10 | train 4.7355 | val 4.9595 ppl 142.52 | 57.3s (cum 9.5 min) | lr 1.00e-02 | peak 1804 MB | skipped 0 *
+[2026-10-11T07:34:19] epoch  11 | train 4.6755 | val 4.9644 ppl 143.23 | 57.5s (cum 10.5 min) | lr 1.00e-02 | peak 1804 MB | skipped 0
+[2026-10-11T07:35:16] epoch  12 | train 4.6208 | val 4.9597 ppl 142.55 | 56.7s (cum 11.4 min) | lr 1.00e-02 | peak 1804 MB | skipped 0
+[2026-10-11T07:36:13] epoch  13 | train 4.5728 | val 4.9679 ppl 143.72 | 56.5s (cum 12.4 min) | lr 1.00e-02 | peak 1804 MB | skipped 0
+[2026-10-11T07:36:13] STOP reason=early_stopping best_epoch=10 best_val=4.9595
+[2026-10-11T07:36:18] FINAL (best ckpt, epoch 10) val ppl 142.52 test ppl 134.75

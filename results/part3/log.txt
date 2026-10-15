@@ -1,0 +1,9 @@
+[2026-10-11T05:03:23] OOV rate before/after conversion: train 0.1870->0.0708, val 0.1862->0.0704, test 0.1862->0.0711; truncated fraction {'train': 0.00075, 'val': 0.0015, 'test': 0.001973684210526316}
+[2026-10-11T05:03:44] lstm_mean: C=0.1 val_acc=0.7520 test_acc=0.7297 test_macroF1=0.7286
+[2026-10-11T05:04:07] transformer_mean: C=1.0 val_acc=0.7930 test_acc=0.7784 test_macroF1=0.7782
+[2026-10-11T05:04:18] lstm_last: C=1.0 val_acc=0.6930 test_acc=0.6916 test_macroF1=0.6898
+[2026-10-11T05:04:27] transformer_last: C=0.01 val_acc=0.7140 test_acc=0.7186 test_macroF1=0.7180
+[2026-10-11T05:04:33] own_frozen_mean: C=0.01 val_acc=0.8105 test_acc=0.7864 test_macroF1=0.7857
+[2026-10-11T05:04:41] glove_frozen_mean: C=0.01 val_acc=0.8410 test_acc=0.8272 test_macroF1=0.8269
+[2026-10-11T05:04:42] glove_avg_baseline: C=0.01 val_acc=0.8855 test_acc=0.8689 test_macroF1=0.8688
+[2026-10-11T05:04:42] saved D:\Users\peter\Desktop\dsa4213_a1\results\part3\results.json

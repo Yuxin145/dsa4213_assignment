@@ -1,0 +1,207 @@
+{
+  "protocol": "Inference cost protocol (§6.4).\n\nCommon workload: score every target token of the chunked test split (log-probability of each target),\nbatch of 32 chunks; the first `warmup` batches are excluded from timing; tokens/sec is the number of\nnon-pad targets in the timed batches divided by their summed time; median of `runs` runs.\nGeneration latency: greedy, 50 new tokens, one prompt, batch 1; one untimed warm-up, median of 5 runs.",
+  "cpu_threads": 14,
+  "models": {
+    "ngram": {
+      "cpu_throughput": {
+        "tokens_per_s_median": 334487.07574074116,
+        "tokens_per_s_runs": [
+          326820.9127998735,
+          334487.07574074116,
+          340140.7313972004
+        ],
+        "timed_tokens_per_run": 223621,
+        "warmup_batches_used": 5,
+        "n_batches": 60
+      },
+      "cpu_latency": {
+        "latency_s_median": 0.047827299997152295,
+        "latency_s_runs": [
+          0.055174799999804236,
+          0.047941099997842684,
+          0.04670379999879515,
+          0.046229999999923166,
+          0.047827299997152295
+        ],
+        "ms_per_token": 0.9565459999430459
+      }
+    },
+    "rnn": {
+      "checkpoint": "results/part1/rnn/seed0/best.pt",
+      "params": {
+        "input_embedding": 2891300,
+        "core": 223232,
+        "output_layer": 7430641,
+        "total": 10545173,
+        "trainable": 10545173,
+        "frozen": 0
+      },
+      "cpu_throughput": {
+        "tokens_per_s_median": 9500.477194840085,
+        "tokens_per_s_runs": [
+          9339.197085575443,
+          9500.477194840085,
+          12533.454272403245
+        ],
+        "timed_tokens_per_run": 223621,
+        "warmup_batches_used": 5,
+        "n_batches": 60
+      },
+      "cpu_latency": {
+        "latency_s_median": 0.19482199999765726,
+        "latency_s_runs": [
+          0.20930870000302093,
+          0.21414379999623634,
+          0.17691509999713162,
+          0.18411159999959636,
+          0.19482199999765726
+        ],
+        "ms_per_token": 3.896439999953145
+      },
+      "gpu_throughput": {
+        "tokens_per_s_median": 112181.56858524517,
+        "tokens_per_s_runs": [
+          112438.77979115368,
+          112181.56858524517,
+          111801.51115757489
+        ],
+        "timed_tokens_per_run": 223621,
+        "warmup_batches_used": 5,
+        "n_batches": 60
+      },
+      "gpu_latency": {
+        "latency_s_median": 0.08100389999890467,
+        "latency_s_runs": [
+          0.07878820000041742,
+          0.08097959999577142,
+          0.08100389999890467,
+          0.08287230000132695,
+          0.08254519999900367
+        ],
+        "ms_per_token": 1.6200779999780934
+      },
+      "gpu_amp": true
+    },
+    "lstm": {
+      "checkpoint": "results/part1/lstm/seed0/best.pt",
+      "params": {
+        "input_embedding": 2891300,
+        "core": 892928,
+        "output_layer": 7430641,
+        "total": 11214869,
+        "trainable": 11214869,
+        "frozen": 0
+      },
+      "cpu_throughput": {
+        "tokens_per_s_median": 14929.305694137398,
+        "tokens_per_s_runs": [
+          15982.309273718442,
+          14383.753720007804,
+          14929.305694137398
+        ],
+        "timed_tokens_per_run": 223621,
+        "warmup_batches_used": 5,
+        "n_batches": 60
+      },
+      "cpu_latency": {
+        "latency_s_median": 0.23551430000225082,
+        "latency_s_runs": [
+          0.2639022000003024,
+          0.23551430000225082,
+          0.23589240000001155,
+          0.22839810000004945,
+          0.22754239999630954
+        ],
+        "ms_per_token": 4.710286000045016
+      },
+      "gpu_throughput": {
+        "tokens_per_s_median": 94654.08303118686,
+        "tokens_per_s_runs": [
+          96476.67149072736,
+          94235.48339910382,
+          94654.08303118686
+        ],
+        "timed_tokens_per_run": 223621,
+        "warmup_batches_used": 5,
+        "n_batches": 60
+      },
+      "gpu_latency": {
+        "latency_s_median": 0.16621869999653427,
+        "latency_s_runs": [
+          0.16243379999650642,
+          0.16621869999653427,
+          0.16924460000154795,
+          0.15124020000075689,
+          0.17124999999941792
+        ],
+        "ms_per_token": 3.3243739999306854
+      },
+      "gpu_amp": true
+    },
+    "transformer": {
+      "checkpoint": "results/part1/transformer/seed0/best.pt",
+      "params": {
+        "input_embedding": 2891300,
+        "core": 1638656,
+        "output_layer": 7430641,
+        "total": 11960597,
+        "trainable": 11960597,
+        "frozen": 0
+      },
+      "cpu_throughput": {
+        "tokens_per_s_median": 12008.070297894075,
+        "tokens_per_s_runs": [
+          12356.38208231402,
+          11976.215370496802,
+          12008.070297894075
+        ],
+        "timed_tokens_per_run": 223621,
+        "warmup_batches_used": 5,
+        "n_batches": 60
+      },
+      "cpu_latency": {
+        "latency_s_median": 0.25167969999893103,
+        "latency_s_runs": [
+          0.25532099999691127,
+          0.24435929999890504,
+          0.25167969999893103,
+          0.24850940000033006,
+          0.25859260000288486
+        ],
+        "ms_per_token": 5.033593999978621
+      },
+      "gpu_throughput": {
+        "tokens_per_s_median": 115678.60754917577,
+        "tokens_per_s_runs": [
+          115678.60754917577,
+          116011.911996163,
+          115202.31536938158
+        ],
+        "timed_tokens_per_run": 223621,
+        "warmup_batches_used": 5,
+        "n_batches": 60
+      },
+      "gpu_latency": {
+        "latency_s_median": 0.12845799999922747,
+        "latency_s_runs": [
+          0.1334022000010009,
+          0.13207900000270456,
+          0.12828499999886844,
+          0.12470510000275681,
+          0.12845799999922747
+        ],
+        "ms_per_token": 2.5691599999845494
+      },
+      "gpu_amp": true
+    }
+  },
+  "manifest": {
+    "start": "2026-10-11T08:23:09",
+    "end": "2026-10-11T08:26:50",
+    "git_commit": "c35c63ce120df28ad767053d65aa748eb2d2e5b4",
+    "config_hash": "77b4ce32a1a1a489",
+    "seed": 0,
+    "hardware": "Windows 11; CPU: Intel64 Family 6 Model 186 Stepping 2, GenuineIntel; torch 2.14.1+cu132; GPU: NVIDIA GeForce RTX 3050 4GB Laptop GPU",
+    "log_file": "results/part1/benchmark_log.txt"
+  }
+}

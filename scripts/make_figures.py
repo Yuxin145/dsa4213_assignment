@@ -114,21 +114,36 @@ def confusion(root, out):
 
 
 def ppl_vs_acc(root, out):
-    p = root / "part3" / "results.json"
-    if not p.exists():
-        return
-    r = load_json(p)
-    pts = [x for x in r["ppl_vs_downstream"] if x["lm_test_ppl_seed0"] is not None and x["representation"].endswith("_mean")]
+    """LM test perplexity vs AG News accuracy (mean pooling). Uses the mean ± std over LM seeds when Part III was
+    run on several seeds (tables.json 'aggregate'), otherwise the seed-0 values."""
+    tj = root / "tables" / "tables.json"
+    agg = load_json(tj).get("part3", {}).get("aggregate") if tj.exists() else None
+    pts = []
+    if agg:
+        for n, a in agg.items():
+            if n.endswith("_mean") and a.get("lm_test_ppl"):
+                pts.append((n, a["lm_test_ppl"][0], a["lm_test_ppl"][1], a["test_acc"][0], a["test_acc"][1]))
+        sub = f"mean ± std over LM seeds {load_json(tj)['part3']['seeds']}"
+    else:
+        p = root / "part3" / "results.json"
+        if not p.exists():
+            return
+        r = load_json(p)
+        for x in r["ppl_vs_downstream"]:
+            if x["lm_test_ppl_seed0"] is not None and x["representation"].endswith("_mean"):
+                pts.append((x["representation"], x["lm_test_ppl_seed0"], 0, x["test_acc"], 0))
+        sub = "LM seed 0"
     if len(pts) < 2:
         return
-    fig, ax = plt.subplots(figsize=(HALF_W, 2.5))
-    for i, x in enumerate(pts):
-        ax.plot(x["lm_test_ppl_seed0"], x["test_acc"], "o", ms=7, color=SERIES[i % len(SERIES)], mec=SURFACE, mew=1.5)
-        ax.annotate(x["representation"].replace("_mean", ""), (x["lm_test_ppl_seed0"], x["test_acc"]),
-                    xytext=(5, 3), textcoords="offset points", fontsize=7, color=INK)
-    ax.set_xlabel("LM test perplexity (WikiText-2, seed 0) — lower is better")
+    fig, ax = plt.subplots(figsize=(HALF_W, 2.6))
+    for i, (n, px, sx, py, sy) in enumerate(pts):
+        ax.errorbar(px, py, xerr=sx, yerr=sy, fmt="o", ms=6.5, color=SERIES[i % len(SERIES)], mec=SURFACE,
+                    mew=1.3, elinewidth=1.2, capsize=2.5)
+        ax.annotate(n.replace("_mean", ""), (px, py), xytext=(6, 4), textcoords="offset points", fontsize=7, color=INK)
+    ax.set_xlabel("LM test perplexity (WikiText-2) — lower is better")
     ax.set_ylabel("AG News test accuracy")
-    ax.set_title("Language-model quality vs downstream accuracy", loc="left")
+    ax.set_title("LM quality vs downstream accuracy (mean pooling)", loc="left")
+    fig.text(0.01, -0.02, sub, fontsize=6.5, color=INK2)
     fig.tight_layout()
     save(fig, out, "part3_ppl_vs_acc")
 

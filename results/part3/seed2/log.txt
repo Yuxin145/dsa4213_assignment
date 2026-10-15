@@ -1,0 +1,9 @@
+[2026-10-15T18:43:12] Part III with LM seed 2. OOV rate before/after conversion: train 0.1870->0.0708, val 0.1862->0.0704, test 0.1862->0.0711; truncated fraction {'train': 0.00075, 'val': 0.0015, 'test': 0.001973684210526316}
+[2026-10-15T18:43:45] lstm_mean: C=0.01 val_acc=0.7405 test_acc=0.7304 test_macroF1=0.7298
+[2026-10-15T18:44:27] transformer_mean: C=0.1 val_acc=0.7855 test_acc=0.7797 test_macroF1=0.7792
+[2026-10-15T18:44:43] lstm_last: C=0.01 val_acc=0.7025 test_acc=0.6914 test_macroF1=0.6903
+[2026-10-15T18:45:23] transformer_last: C=0.01 val_acc=0.7460 test_acc=0.7291 test_macroF1=0.7279
+[2026-10-15T18:46:15] own_frozen_mean: C=0.1 val_acc=0.8025 test_acc=0.7857 test_macroF1=0.7852
+[2026-10-15T18:46:36] glove_frozen_mean: C=0.01 val_acc=0.8480 test_acc=0.8288 test_macroF1=0.8285
+[2026-10-15T18:46:39] glove_avg_baseline: C=0.01 val_acc=0.8855 test_acc=0.8689 test_macroF1=0.8688
+[2026-10-15T18:46:39] saved D:\Users\peter\Desktop\dsa4213_a1\results\part3\seed2\results.json

@@ -1,0 +1,7 @@
+| embedding | test ppl | best val CE | var(best val CE) over seeds | best epoch(s) | val-loss spikes (>10%) | time to best (s) | trainable / frozen params | vocab type coverage | train-token coverage | embedding training time (s, CPU) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| LSTM + random (trainable) | 135.62 ± 2.73 | 4.9733 ± 0.0202 | 2.71e-04 | 11,13,10 | 0,0,0 | 652 ± 81 | 11.21M / 0.00M | – | – | – |
+| LSTM + own W2V (frozen) | 126.21 ± 0.73 | 4.8933 ± 0.0066 | 2.92e-05 | 13,11,10 | 0,0,0 | 627 ± 87 | 8.32M / 2.89M | 100.0% | 100.0% | 403 |
+| LSTM + GloVe (frozen) | 136.54 ± 3.67 | 4.9777 ± 0.0242 | 3.91e-04 | 13,14,15 | 0,0,0 | 775 ± 62 | 8.32M / 2.89M | 96.2% | 94.7% | – |
+
+Random-trainable row reuses the Part I LSTM runs. Coverage is over non-<pad> types and training tokens. Embedding training time (own Word2Vec) is separate from LM training.

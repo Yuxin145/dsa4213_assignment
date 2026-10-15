@@ -1,0 +1,107 @@
+paths:
+  results: results
+  results_smoke: results_smoke
+data:
+  hf_name: Salesforce/wikitext
+  hf_config: wikitext-2-v1
+  lowercase: true
+  specials:
+  - <pad>
+  - <unk>
+  - <eos>
+  context_length: 128
+  smoke_fraction: 0.01
+ngram:
+  order: 3
+  lambda_grid_step: 0.05
+model:
+  emb_dim: 100
+  hidden: 256
+  layers: 2
+  dropout: 0.3
+  emb_init_std: 0.1
+  transformer:
+    nhead: 4
+    dim_feedforward: 1024
+embedding:
+  type: random
+  freeze: false
+train:
+  batch_size: 32
+  micro_batch: 32
+  weight_decay: 0.01
+  grad_clip: 1.0
+  warmup_steps: 200
+  max_epochs: 40
+  patience: 3
+  wall_clock_cap_min: 90
+  amp: true
+  seeds:
+  - 0
+  - 1
+  - 2
+  lr:
+    rnn: 0.0003
+    lstm: 0.01
+    transformer: 0.003
+budget:
+  total_gpu_hours: 8.0
+  assumed_typical_epochs: 15
+lr_sweep:
+  grid:
+  - 0.0003
+  - 0.001
+  - 0.003
+  edge_low: 0.0001
+  edge_high: 0.01
+  epochs: 2
+  seed: 0
+word2vec:
+  vector_size: 100
+  window: 5
+  min_count: 1
+  negative: 10
+  epochs: 10
+  seed: 0
+  workers: 1
+  sg: 1
+glove:
+  gensim_name: glove-wiki-gigaword-100
+  missing_seed: 0
+generation:
+  max_new_tokens: 50
+  temperature: 0.8
+  top_k: 40
+  sample_seed: 1234
+  prompts:
+  - the history of the city began in the
+  - in 1995 , the band released their second album
+  - the species is found in the forests of
+  - during the second world war , the ship was
+  - the game received positive reviews from critics , who
+benchmark:
+  batch_size: 32
+  warmup_batches: 5
+  throughput_runs: 3
+  latency_runs: 5
+  latency_new_tokens: 50
+part3:
+  hf_name: fancyzhx/ag_news
+  n_sample: 10000
+  n_train: 8000
+  n_val: 2000
+  split_seed: 0
+  max_len: 128
+  C_grid:
+  - 0.01
+  - 0.1
+  - 1.0
+  - 10.0
+  max_iter: 2000
+  n_error_examples: 10
+run:
+  arch: transformer
+  seed: 1
+  lr: 0.003
+  max_epochs: 40
+  vocab_sha256: 86014eda035ebfe9d43635c0a277dbe0f506b553b1c66b3711bdab20f47b153f

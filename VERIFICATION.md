@@ -3,34 +3,44 @@
 > Restored on 2026-10-11 ~03:15 by the agent: this file was deleted by accident around 02:04 (confirmed by the
 > student). No git commit existed, so it was rewritten from the agent's last version plus the 03:12 updates below.
 
-## STATUS SUMMARY (2026-10-11, before the full runs)
-- **Implemented:** the whole pipeline — data/vocab, interpolated trigram, RNN/LSTM/Transformer, AMP training with
-  checkpoint/resume and early stopping, generation, Part II embeddings, Part III classifier, benchmarks, tables,
-  figures, report draft (`src/`, `scripts/`, `run_all.py`, `configs/`).
-- **Tests:** `python -m pytest -q` → **65 passed, 0 failed, 0 skipped** (`logs/pytest_final.log`), covering all 15
-  required tests of CLAUDE.md §10.
-- **Executed on the full data:** vocab + data stats; trigram (test ppl **248.73**, val 264.06,
-  λ = (0.25, 0.45, 0.25, 0.05)); profiling (twice — see Phase 5); LR sweep (0.93 GPU-h; selected RNN 3e-4, LSTM 1e-2,
-  Transformer 3e-3); own Word2Vec (403 s CPU) and the GloVe table. End-to-end smoke run of every stage.
-- **Not yet executed:** the 15 full LM runs (Part I neural + Part II), generation, Part III, benchmarks on real
-  checkpoints, final tables/figures/draft → **`## RUN THIS`** below (planned stop, CLAUDE.md §2).
-- **Deviations / RULE outcomes:** max_epochs stays 40 (a temporary 40 → 25 reduction was withdrawn after clean
-  re-profiling); the overfit test uses dropout 0 + lr 1e-2; training-loop tests use a 2,000-word vocabulary.
-  Details in `DECISIONS.md`.
+## FINAL SUMMARY (2026-10-15)
+- **Everything required by CLAUDE.md has been executed.** 15 LM runs (RNN, LSTM, Transformer, LSTM + own Word2Vec
+  frozen, LSTM + GloVe frozen; seeds 0, 1, 2), trigram, generation, Part III (seed-0 checkpoints = main result, plus
+  seed-1/2 checkpoints on request), benchmarks, tables, figures and the report draft. All runs have `DONE` markers,
+  no interruptions, no NaN/inf; manifests record commit `c35c63c`.
+- **Tests:** `python -m pytest -q` → **65 passed, 0 failed, 0 skipped** (`logs/pytest_phase7.log`, after the last
+  code change). All 15 required tests of CLAUDE.md §10 are covered.
+- **Final configuration:** V = 28,913; emb 100, hidden 256, 2 layers, dropout 0.3, context 128, untied output; AdamW
+  (wd 0.01), clip 1.0, batch 32 (micro-batch 32), AMP; LR RNN 3e-4 / LSTM 1e-2 (also Part II) / Transformer 3e-3;
+  max 40 epochs, patience 3; trigram λ = (0.25, 0.45, 0.25, 0.05).
+- **Runtime:** full stage 5 h 07 min wall clock; LM training 4.94 GPU-h + sweep 0.93 h = 5.87 h of the 8 h budget.
+- **Key results** (mean ± std over 3 seeds; details in `results/tables/`):
+  - Part I test ppl: trigram 248.73, RNN 156.22 ± 1.04, LSTM 135.62 ± 2.73, Transformer 135.19 ± 1.23.
+  - Part II test ppl: random 135.62 ± 2.73, own W2V frozen 126.21 ± 0.73, GloVe frozen 136.54 ± 3.67.
+  - Part III test acc: LSTM 0.7312 ± 0.0020, Transformer 0.7771 ± 0.0035 (gap +0.046 ± 0.005, exact McNemar
+    p ≤ 7.6e-14 per seed); own-W2V LSTM 0.7889 ± 0.0050, GloVe LSTM 0.8286 ± 0.0013, GloVe average 0.8689.
+- **Sanity ranges (CLAUDE.md §11):** trigram, RNN, LSTM, Transformer ppl all inside their ranges; LSTM ppl > 60.
+  Flags (reported, not "fixed"): (a) LSTM mean-pooled AG News accuracy 0.731 is slightly below the 0.75–0.90
+  reference (Transformer 0.777 is inside); no bug found, likely domain shift / ~7% OOV after conversion.
+  (b) The RNN hit the 40-epoch limit in every seed (best epochs 40, 39, 39), still improving slowly: its result is
+  budget-limited, not converged.
+- **Deviations from CLAUDE.md:** (1) the overfit test uses dropout 0 + lr 1e-2 (same for all models); (2) training-loop
+  tests use a 2,000-word vocabulary; (3) max_epochs was briefly 25 and restored to 40 before any full run;
+  (4) Part III additionally run on LM seeds 1 and 2 (student's request; seed 0 remains the LOCKED main result).
+  All in `DECISIONS.md`.
 
-## NEEDS HUMAN
+## NEEDS HUMAN (review, not blockers)
 
-1. **Resolved (03:12): GPU speed / budget.** The earlier slow timings came from throttling while the machine was in
-   use. After you closed other programs and improved cooling, I re-measured: **49.2 / 55.9 / 54.6 s per epoch**
-   (RNN / LSTM / Transformer), mean 33 W, clock ~1,500 MHz. Typical estimate ≈ 4.3 h incl. the sweep → within the
-   8 h budget; max_epochs back to 40 (DECISIONS.md). Keep these conditions during the full run (performance mode,
-   cooling, no other heavy programs), especially during the final benchmark step. Mild thermal slowdown at 75 °C
-   still occurs, so mention throttling as a limitation of the timings.
-2. The after-seed-0 budget check stays active (`results/budget_check.json`). If it stops before seeds 1–2, the
-   options are `--ignore-budget`, Kaggle, or fewer seeds (CLAUDE.md §9).
-3. **Recommended: commit the code before the full runs** (`git add -A` then `git commit`), so that every run
-   manifest records a real commit hash and project files are protected against accidental deletion (this file was
-   lost once). The repo has no commit yet, so manifests say `no-commit`. I did not commit without your instruction.
+1. **Write the report** from `report/draft.md` (≤ 6 pages): rewrite every [OBSERVATION]/[HYPOTHESIS] sentence in
+   your own words, fill the "Fill in" items (overfitting signs, generated-text differences, Part II convergence),
+   and complete `AI_USE.md`.
+2. **Points to discuss honestly in the report:** RNN not converged at 40 epochs (lr 3e-4); LRs from a 2-epoch sweep
+   (LSTM 1e-2 is high, though no loss spikes occurred); LSTM and Transformer tied on perplexity but clearly different
+   downstream; GloVe overlaps Wikipedia text; laptop GPU throttling affects timings (benchmarks ran while the laptop
+   was idle, 08:23–08:27, confirmed by the student).
+3. **Commit the results** (`git add -A` then `git commit`); checkpoints (`*.pt`) are excluded by `.gitignore`.
+4. A leftover `python.exe` (PID 43680, 36 KB, started 2026-10-11 08:27) holds no resources; end it in Task
+   Manager if you like.
 
 ## Phase 1 — environment, data, vocab, utils (tests 1, 13)
 - Interpreter: `D:\anaconda3\envs\dsa4213\python.exe`, `torch 2.14.1+cu132`, `torch.cuda.is_available() = True`,
@@ -107,24 +117,26 @@
   coverage **96.18% of types, 94.74% of training tokens**; 1,103 missing types (1,102 random rows, `<unk>` = mean).
   Cached; the full run reuses them.
 
-## RUN THIS
+## Full runs (executed by the student, 2026-10-11 03:20 → 08:27)
+- Command: `python run_all.py --stage full` (log `results/run_all_log.txt`). Budget check after seed 0: sweep 0.93 h
+  + seed-0 runs 1.68 h + projected seeds 1–2 3.36 h = 5.97 h ≤ 8 h → seeds 1–2 ran (`results/budget_check.json`).
+- 15/15 runs `DONE`, no `RESUME` (no interruption), no NaN/inf. GradScaler skipped at most 7 of 20,280 steps per run
+  (routine dynamic loss scaling). Per-run times and epochs: README "Actual runtimes".
+- Stopping: LSTM 13–16 epochs, Transformer 19–30, Part II variants 13–18 (all early stopping); RNN 40 (max_epochs).
+- Generation (seed 0): `results/part1/generations.json`, `results/part2/generations.json`.
+- Benchmarks (08:23–08:27, laptop idle per the student): `results/part1/benchmark.json`. GPU tok/s: RNN 112,182,
+  LSTM 94,654, Transformer 115,679. CPU tok/s: trigram 334,487, RNN 9,500, LSTM 14,929, Transformer 12,008.
+  Greedy 50-token latency GPU / CPU (ms): RNN 81 / 195, LSTM 166 / 236, Transformer 129 / 252, trigram – / 48.
 
-In a normal PowerShell terminal, keeping the clean conditions (performance mode, cooling, no other heavy programs):
-
-```powershell
-cd D:\Users\peter\Desktop\dsa4213_a1
-$env:HF_HUB_DISABLE_SYMLINKS_WARNING = "1"
-D:\anaconda3\envs\dsa4213\python.exe run_all.py --stage full
-```
-
-- Order: data check → trigram (DONE, skipped) → seed 0 of RNN, LSTM, Transformer, LSTM+own-W2V, LSTM+GloVe →
-  generation (seed 0) → Part III (seed-0 checkpoints) → budget check → seeds 1 and 2 of all five → benchmarks
-  (`results/part1/benchmark.json`) → tables, figures, `report/draft.md`.
-- Expected GPU time: typically ~3.5–4 h at the clean profiling speed (worst case ~9 h if most runs went to 40
-  epochs); seed 0 alone is about a third. Keep the laptop plugged in and stop it from sleeping (e.g.
-  `powercfg /change standby-timeout-ac 0`; restore it afterwards).
-- **Interruptions are safe:** run the same command again. Finished runs (`DONE`) are skipped, and the current run
-  resumes from `last.pt` at its last completed epoch.
-- Progress: `results/run_all_log.txt` (overview) and `results/part*/<model>/seed*/log.txt` (per epoch).
-- When it finishes (or stops at the budget check), come back to the agent. It will check the logs and the sanity
-  ranges (CLAUDE.md §11), then complete Phase 7 (README runtimes, checklist, final summary).
+## Phase 7 — Part III over LM seeds, tables, figures, checklist, README (2026-10-15)
+- Part III on the seed-1 and seed-2 checkpoints of all four LM variants, same protocol
+  (`python run_all.py --stage part3 --seeds 1 2`, log `logs/part3_seeds12.log`, outputs `results/part3/seed1/`,
+  `results/part3/seed2/`; seed-0 results in `results/part3/` unchanged). All `params_unchanged = true`.
+- New aggregated tables: `results/tables/part3_seeds.md`, `part3_pairwise.md` (exact McNemar per seed),
+  `part3_rank_seeds.md`; `figures/part3_ppl_vs_acc` shows mean ± std. Logged in DECISIONS.md.
+- `python run_all.py --stage report` regenerated all tables, figures (PNG + PDF) and `report/draft.md`; the draft now
+  states the LSTM/Transformer perplexity tie, the RNN epoch-limit issue and the multi-seed Part III result.
+  Smoke-mode report generation still works.
+- `README.md`: actual runtimes table; `REQUIREMENTS_CHECKLIST.md`: every requirement mapped, none MISSING on the
+  code/experiment side (remaining items are the student's writing).
+- Tests after the last code change: **65 passed** (`logs/pytest_phase7.log`).

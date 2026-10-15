@@ -124,3 +124,25 @@ Best validation CE after 2 epochs, seed 0 (grid {3e-4, 1e-3, 3e-3}; one edge ext
 - Not affected by the speed issue: LR selection, all losses/perplexities, the n-gram results, all tests.
   Affected (timing only, to be noted in the report): n-gram fit time (42 s) and Word2Vec time (403 s) may be
   slightly inflated by concurrent use; the sweep's own epoch times are not reported as results.
+
+## Part III over three LM seeds (added 2026-10-15 at the student's request)
+- **Why:** CLAUDE.md §8 specifies the main comparison on the seed-0 checkpoints only. With one LM seed, an
+  accuracy gap could come from that particular checkpoint. The student asked for the same Part III protocol on
+  the seed-1 and seed-2 checkpoints of every LM variant (Part I LSTM, Part I Transformer, Part II own-W2V and GloVe
+  LSTMs), reported as mean ± std next to the seed-0 results.
+- **What is identical across LM seeds:** AG News split (seed 0, same indices), text conversion, 128-token
+  truncation, poolings (mean; last for LSTM/Transformer), `StandardScaler + LogisticRegression(max_iter=2000)`,
+  C grid {0.01, 0.1, 1, 10} chosen on validation accuracy, single test evaluation. Only the LM checkpoint differs.
+  The GloVe-average baseline does not use an LM, so it is identical for every seed (std 0).
+- **Where:** seed 0 stays in `results/part3/` (unchanged, still the LOCKED main result); seeds 1 and 2 in
+  `results/part3/seed1/`, `results/part3/seed2/` (log `logs/part3_seeds12.log`; command
+  `python run_all.py --stage part3 --seeds 1 2`). Each `results.json` records the checkpoint paths + SHA-256 and
+  `params_unchanged = true`. Seeds 1/2 also store test predictions per representation.
+- **Aggregation** (`scripts/make_tables.py`): `results/tables/part3_seeds.md` (seed-0 value, mean ± sample std over
+  seeds 0–2, per-seed values, C per seed), `part3_pairwise.md` (per-seed paired LSTM vs Transformer comparison on
+  the same 7,600 articles with an exact McNemar test, i.e. two-sided binomial test on the discordant counts),
+  `part3_rank_seeds.md` (rank agreement using seed means); figure `figures/part3_ppl_vs_acc` now shows mean ± std.
+- **Outcome:** LSTM 0.7312 ± 0.0020, Transformer 0.7771 ± 0.0035; Transformer − LSTM = +0.0459 ± 0.0054, positive
+  for every seed, exact McNemar p ≤ 7.6e-14 for each seed. The seed-0 gap was not a chance effect of one
+  checkpoint. The selected C varies across seeds (e.g. Transformer 1.0 / 10 / 0.1), so test accuracy is not very
+  sensitive to C in this range.
