@@ -29,6 +29,15 @@ def make_scheduler(opt, arch: str, cfg: dict):
     return torch.optim.lr_scheduler.LambdaLR(opt, lambda step: 1.0)
 
 
+def _raise_on_amp_skip(scaler, scale_before: float) -> None:
+    """Escalate any GradScaler-detected non-finite gradient instead of silently skipping an update."""
+    if scaler.is_enabled() and scaler.get_scale() < scale_before:
+        raise FloatingPointError(
+            "AMP GradScaler skipped an optimizer step after detecting non-finite scaled gradients. "
+            "Stop this run and record the escalation in VERIFICATION.md; do not silently mix precision policies."
+        )
+
+
 def _rng_state() -> dict:
     st = {"torch": torch.get_rng_state(), "numpy": np.random.get_state(), "python": random.getstate()}
     if torch.cuda.is_available():
@@ -82,7 +91,8 @@ def train_epoch(model, opt, sched, scaler, inputs, targets, perm, cfg, device, p
         scaler.step(opt)
         scaler.update()
         if scaler.is_enabled() and scaler.get_scale() < scale_before:
-            skipped += 1  # inf/nan gradients -> step skipped by GradScaler
+            skipped += 1
+        _raise_on_amp_skip(scaler, scale_before)
         sched.step()
         gnorms.append(float(gn))
         tot_nll += step_nll
@@ -172,8 +182,12 @@ def train_run(cfg: dict, arch: str, seed: int, lr: float, run_dir: Path, data: d
         t0 = time.perf_counter()
         perm = epoch_permutation(tr_x.size(0), seed, ep).to(tr_x.device)
         trace = []
-        tr = train_epoch(model, opt, sched, scaler, tr_x, tr_y, perm, cfg, device, pad_id, amp,
-                         max_steps=max_steps_per_epoch, loss_trace=trace)
+        try:
+            tr = train_epoch(model, opt, sched, scaler, tr_x, tr_y, perm, cfg, device, pad_id, amp,
+                             max_steps=max_steps_per_epoch, loss_trace=trace)
+        except FloatingPointError as exc:
+            log(f"AMP ESCALATION at epoch {ep}: {exc}")
+            raise
         state["first_step_losses"] = (state["first_step_losses"] + trace)[:50]
         if device.type == "cuda":
             torch.cuda.synchronize(device)

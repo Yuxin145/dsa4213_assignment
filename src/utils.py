@@ -17,6 +17,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG_PATH = ROOT / "configs" / "base.yaml"
+EXPERIMENT_SOURCE_PATHS = ("src", "scripts", "configs", "run_all.py", "requirements.txt")
 
 
 # ----------------------------------------------------------------------------- config
@@ -130,12 +131,32 @@ def hardware_string(device: torch.device | None = None) -> str:
     return s
 
 
+def require_clean_source() -> str:
+    """Return HEAD, or refuse a real-result run whose experiment source is not exactly committed."""
+    head = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, encoding="utf-8", timeout=10
+    )
+    commit = head.stdout.strip() if head.returncode == 0 else ""
+    status = subprocess.run(
+        ["git", "status", "--porcelain", "--", *EXPERIMENT_SOURCE_PATHS],
+        cwd=ROOT, capture_output=True, text=True, encoding="utf-8", timeout=10,
+    )
+    dirty = status.stdout.strip() if status.returncode == 0 else "unable to inspect source status"
+    if not commit or dirty:
+        detail = dirty or "repository has no readable HEAD commit"
+        raise RuntimeError(
+            "Real-result runs require clean committed experiment source so manifests identify exact code. "
+            f"Commit or revert the source changes first. Git status: {detail}"
+        )
+    return commit
+
+
 def git_commit() -> str:
     try:
         out = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True,
                              text=True, encoding="utf-8", timeout=10)
         commit = out.stdout.strip() if out.returncode == 0 else "no-commit"
-        dirty = subprocess.run(["git", "status", "--porcelain", "--", "src", "scripts", "configs"],
+        dirty = subprocess.run(["git", "status", "--porcelain", "--", *EXPERIMENT_SOURCE_PATHS],
                                cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
                                timeout=10).stdout.strip()
         return commit + ("-dirty" if dirty else "")

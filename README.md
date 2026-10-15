@@ -24,15 +24,15 @@ all training-split types (no cutoff) + `<pad>`(0), `<unk>`, `<eos>`; saved once 
 SHA-256 hash that every model and Part III check. Evaluation: each split is one stream cut into non-overlapping
 128-token chunks; padded targets excluded; ppl = exp(total NLL / non-pad targets).
 
-## Commands (use the env's interpreter, e.g. `D:\anaconda3\envs\dsa4213\python.exe`)
+## Commands (always use the environment's absolute interpreter path)
 ```
-python -m pytest -q                      # all required tests (CLAUDE.md §10)
-python run_all.py --smoke                # end-to-end smoke run (1% data, 1 epoch, seed 0) -> results_smoke/
-python run_all.py --stage profile        # one epoch per neural model (compute budget)
-python scripts/lr_sweep.py               # LR sweep -> configs/lr_selected.yaml
-python run_all.py --stage speedcheck     # ~2 min: current s/epoch and projected full-run hours vs the 8 h budget
-python run_all.py --stage full           # all full runs, Part III, benchmarks, tables, figures, draft (resumable)
-python run_all.py --stage report         # regenerate tables/figures/report draft from results/**/*.json
+D:\anaconda3\envs\dsa4213\python.exe -m pytest -q
+D:\anaconda3\envs\dsa4213\python.exe run_all.py --smoke
+D:\anaconda3\envs\dsa4213\python.exe run_all.py --stage profile
+D:\anaconda3\envs\dsa4213\python.exe scripts/lr_sweep.py
+D:\anaconda3\envs\dsa4213\python.exe run_all.py --stage speedcheck
+D:\anaconda3\envs\dsa4213\python.exe run_all.py --stage full
+D:\anaconda3\envs\dsa4213\python.exe run_all.py --stage report
 ```
 `--stage full` order: n-gram; seed 0 of RNN, LSTM, Transformer, LSTM+own-W2V, LSTM+GloVe; generation and Part III
 on seed-0 checkpoints; seeds 1 and 2 of all five; benchmarks (`scripts/benchmark.py`); tables/figures/draft.
@@ -70,6 +70,8 @@ Word2Vec seed 0 (workers 1); AG News split seed 0; generation sampling seed 1234
 | Part III on seed-1 and seed-2 checkpoints (`--stage part3 --seeds 1 2`) | ~3.5 min per seed | `logs/part3_seeds12.log` |
 | Inference benchmarks | 4 min | `results/part1/benchmark.json` |
 
-Part III on additional seeds: `python run_all.py --stage part3 --seeds 1 2` writes `results/part3/seed1/` and
-`results/part3/seed2/`; `python run_all.py --stage report` aggregates them (`results/tables/part3_seeds.md`,
+Part III on additional seeds:
+`D:\anaconda3\envs\dsa4213\python.exe run_all.py --stage part3 --seeds 1 2` writes
+`results/part3/seed1/` and `results/part3/seed2/`;
+`D:\anaconda3\envs\dsa4213\python.exe run_all.py --stage report` aggregates them (`results/tables/part3_seeds.md`,
 `part3_pairwise.md`, `part3_rank_seeds.md`).

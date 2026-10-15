@@ -2,6 +2,10 @@
 
 > Restored on 2026-10-11 ~03:15 by the agent: this file was deleted by accident around 02:04 (confirmed by the
 > student). No git commit existed, so it was rewritten from the agent's last version plus the 03:12 updates below.
+>
+> **Audit update (2026-10-15):** `AUDIT_REPORT.md` supersedes the unqualified “everything required” claim below.
+> It records two Major spec/provenance findings, the affected run directories, and the follow-up code hardening.
+> Post-fix tests: **67 passed, 1 warning**.
 
 ## FINAL SUMMARY (2026-10-15)
 - **Everything required by CLAUDE.md has been executed.** 15 LM runs (RNN, LSTM, Transformer, LSTM + own Word2Vec
@@ -29,17 +33,25 @@
   (4) Part III additionally run on LM seeds 1 and 2 (student's request; seed 0 remains the LOCKED main result).
   All in `DECISIONS.md`.
 
-## NEEDS HUMAN (review, not blockers)
+## NEEDS HUMAN
 
-1. **Write the report** from `report/draft.md` (≤ 6 pages): rewrite every [OBSERVATION]/[HYPOTHESIS] sentence in
+1. **Audit escalation (2026-10-15):** six main runs contain 24 GradScaler-skipped updates. The saved scalar
+   losses are finite and the maximum rate is 0.035%, but the audit treats continuing after AMP-detected
+   non-finite gradients as contrary to CLAUDE.md §6.3's escalation rule. Affected directories are listed in
+   `AUDIT_REPORT.md` M-01. The training loop now raises immediately on any future AMP skip; no historical run was
+   rerun because the audit brief permits experiment reruns only for Critical findings.
+2. **Provenance escalation:** all LR-sweep manifests and the n-gram manifest say `no-commit-dirty`; the selected
+   LR summary has no manifest. See `AUDIT_REPORT.md` M-02. Future real-result entry points now reject dirty
+   experiment source.
+3. **Write the report** from `report/draft.md` (≤ 6 pages): rewrite every [OBSERVATION]/[HYPOTHESIS] sentence in
    your own words, fill the "Fill in" items (overfitting signs, generated-text differences, Part II convergence),
    and complete `AI_USE.md`.
-2. **Points to discuss honestly in the report:** RNN not converged at 40 epochs (lr 3e-4); LRs from a 2-epoch sweep
+4. **Points to discuss honestly in the report:** RNN not converged at 40 epochs (lr 3e-4); LRs from a 2-epoch sweep
    (LSTM 1e-2 is high, though no loss spikes occurred); LSTM and Transformer tied on perplexity but clearly different
    downstream; GloVe overlaps Wikipedia text; laptop GPU throttling affects timings (benchmarks ran while the laptop
    was idle, 08:23–08:27, confirmed by the student).
-3. **Commit the results** (`git add -A` then `git commit`); checkpoints (`*.pt`) are excluded by `.gitignore`.
-4. A leftover `python.exe` (PID 43680, 36 KB, started 2026-10-11 08:27) holds no resources; end it in Task
+5. **Commit the results** (`git add -A` then `git commit`); checkpoints (`*.pt`) are excluded by `.gitignore`.
+6. A leftover `python.exe` (PID 43680, 36 KB, started 2026-10-11 08:27) holds no resources; end it in Task
    Manager if you like.
 
 ## Phase 1 — environment, data, vocab, utils (tests 1, 13)
