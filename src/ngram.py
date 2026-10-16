@@ -1,4 +1,4 @@
-"""Interpolated trigram LM implemented with dicts/Counters (§6.1).
+"""Interpolated trigram LM implemented with dicts/Counters.
 
 P(w|u,v) = l3*P_ML(w|u,v) + l2*P_ML(w|v) + l1*P_ML(w) + l0*(1/V), renormalising the lambdas over the
 orders whose context is available (seen in training, and present in the chunk: the context is reset at
@@ -144,7 +144,7 @@ def lambda_grid(step: float) -> list[tuple[float, float, float, float]]:
 
 
 def grid_search_lambdas(P: np.ndarray, A: np.ndarray, step: float, batch: int = 64) -> dict:
-    """RULE §6.1: lambda grid search on VALIDATION components. Returns best + full table."""
+    """RULE: lambda grid search on VALIDATION components. Returns best + full table."""
     grid = lambda_grid(step)
     G = np.asarray(grid, dtype=np.float64)  # (g,4)
     PA = P * A

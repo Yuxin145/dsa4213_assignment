@@ -179,7 +179,7 @@ def main():
       "LRs chosen by a 2-epoch sweep (favours fast early progress); models that hit the epoch limit are not "
       "converged.\n")
     w("## Reproducibility\n")
-    w("See README.md (commands, configs, seeds, hardware, runtimes). Tool use: see AI_USE.md.\n")
+    w("See README.md (commands, configs, seeds, hardware, runtimes).\n")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     print(f"wrote {out}")

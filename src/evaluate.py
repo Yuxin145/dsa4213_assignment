@@ -1,4 +1,4 @@
-"""Common evaluator for neural LMs: ppl = exp(sum NLL / #non-pad targets) over the whole split (§5)."""
+"""Common evaluator for neural LMs: ppl = exp(sum NLL / #non-pad targets) over the whole split."""
 from __future__ import annotations
 
 import math

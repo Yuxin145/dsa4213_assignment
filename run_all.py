@@ -1,8 +1,8 @@
 """Single entry point for the whole pipeline.
 
   python run_all.py --smoke                 # end-to-end smoke run (~1% data, 1 epoch, seed 0) -> results_smoke/
-  python run_all.py --stage lr_sweep        # RULE §6.3 LR sweep (writes configs/lr_selected.yaml)
-  python run_all.py --stage profile         # §9 one epoch per neural model
+  python run_all.py --stage lr_sweep        # RULE LR sweep (writes configs/lr_selected.yaml)
+  python run_all.py --stage profile         # one epoch per neural model
   python run_all.py --stage speedcheck      # ~2 min: current s/epoch per model + projected full-run hours
   python run_all.py --stage full            # all full runs in the required order (resumable)
   python run_all.py --stage report          # tables, figures, report draft from results/**/*.json
@@ -35,7 +35,7 @@ def main() -> None:
     ap.add_argument("--device", default=None, help="cuda / cpu (default: cuda if available)")
     ap.add_argument("--seeds", type=int, nargs="*", default=None)
     ap.add_argument("--variants", nargs="*", default=None, choices=list(P.VARIANTS))
-    ap.add_argument("--ignore-budget", action="store_true", help="run seeds 1-2 even if over the §9 budget")
+    ap.add_argument("--ignore-budget", action="store_true", help="run seeds 1-2 even if over the GPU budget")
     args = ap.parse_args()
 
     smoke = args.smoke
@@ -72,7 +72,7 @@ def main() -> None:
         run_report(smoke, log)
     if stage == "full":
         if device.type != "cuda":
-            raise RuntimeError("full runs must use the GPU (CLAUDE.md §2); CUDA is not available")
+            raise RuntimeError("full runs must use the GPU; CUDA is not available")
         seeds = cfg["train"]["seeds"]
         # seed 0 of everything first, then Part III on seed-0 checkpoints, then the remaining seeds
         P.stage_train(cfg, smoke, device, log, list(P.VARIANTS), [seeds[0]])
@@ -83,7 +83,7 @@ def main() -> None:
         if ok or args.ignore_budget:
             P.stage_train(cfg, smoke, device, log, list(P.VARIANTS), seeds[1:])
         else:
-            log("BUDGET STOP: seeds " + str(seeds[1:]) + " not started (CLAUDE.md §9 step 2). To run them anyway: "
+            log("BUDGET STOP: seeds " + str(seeds[1:]) + " not started (over the GPU budget). To run them anyway: "
                 "python run_all.py --stage full --ignore-budget")
         P.stage_benchmark(cfg, smoke, device, log, seed=seeds[0])
         run_report(smoke, log)

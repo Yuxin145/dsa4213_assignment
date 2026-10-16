@@ -1,6 +1,6 @@
-# Single source of truth for all hyperparameters (CLAUDE.md §1.4).
-# LOCKED / RULE / FREE levels refer to CLAUDE.md §0. RULE values chosen during the run are
-# written here and logged in DECISIONS.md.
+# Single source of truth for all hyperparameters; every run saves its resolved copy next to its results.
+# LOCKED = fixed by design, identical for all compared models. RULE = value picked by a fixed selection
+# rule (LR sweep, profiling, early stopping); the chosen value is written here.
 
 paths:
   results: results
@@ -18,7 +18,7 @@ ngram:
   order: 3
   lambda_grid_step: 0.05                # RULE: grid search on validation
 
-model:                                  # LOCKED architecture (§6.2)
+model:                                  # LOCKED architecture
   emb_dim: 100
   hidden: 256
   layers: 2
@@ -34,11 +34,11 @@ embedding:                              # Part I default; Part II overrides only
 
 train:
   batch_size: 32                        # LOCKED effective batch size
-  micro_batch: 32                       # RULE: fits in 4 GB (profiled, see DECISIONS.md)
+  micro_batch: 32                       # RULE: fits in 4 GB (profiled)
   weight_decay: 0.01                    # LOCKED
   grad_clip: 1.0                        # LOCKED
   warmup_steps: 200                     # LOCKED (Transformer only)
-  max_epochs: 40                        # RULE: 40 (ladder not triggered with clean profiling, DECISIONS.md)
+  max_epochs: 40                        # RULE: 40 (fits the 8 h GPU budget)
   patience: 3                           # RULE
   wall_clock_cap_min: 90                # RULE
   amp: true                             # LOCKED (active on CUDA)
@@ -48,7 +48,7 @@ train:
     lstm: null
     transformer: null
 
-budget:                                 # §9
+budget:                                 # GPU-time budget check after the seed-0 runs
   total_gpu_hours: 8.0
   assumed_typical_epochs: 15            # assumption until seed-0 runs give real epochs-to-best
 
@@ -59,7 +59,7 @@ lr_sweep:
   epochs: 2
   seed: 0
 
-word2vec:                               # LOCKED (§7)
+word2vec:                               # LOCKED
   vector_size: 100
   window: 5
   min_count: 1
@@ -73,7 +73,7 @@ glove:
   gensim_name: glove-wiki-gigaword-100
   missing_seed: 0                       # seed for N(0, sigma^2) rows of missing words
 
-generation:                             # LOCKED (§6.5)
+generation:                             # LOCKED
   max_new_tokens: 50
   temperature: 0.8
   top_k: 40

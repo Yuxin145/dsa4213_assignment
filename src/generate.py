@@ -1,4 +1,4 @@
-"""Autoregressive generation with matched decoding for all four models (§6.5).
+"""Autoregressive generation with matched decoding for all four models.
 
 At every step the model scores the next token given only the prompt and the tokens generated so far
 (neural models: full forward pass on the last <= context_length tokens, last position). <pad> is never

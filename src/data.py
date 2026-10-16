@@ -1,4 +1,4 @@
-"""WikiText-2 loading, preprocessing, vocabulary and the common chunked evaluation setup (§4, §5)."""
+"""WikiText-2 loading, preprocessing, vocabulary and the common chunked evaluation setup."""
 from __future__ import annotations
 
 import hashlib

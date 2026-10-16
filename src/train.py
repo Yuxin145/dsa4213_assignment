@@ -34,7 +34,7 @@ def _raise_on_amp_skip(scaler, scale_before: float) -> None:
     if scaler.is_enabled() and scaler.get_scale() < scale_before:
         raise FloatingPointError(
             "AMP GradScaler skipped an optimizer step after detecting non-finite scaled gradients. "
-            "Stop this run and record the escalation in VERIFICATION.md; do not silently mix precision policies."
+            "Stop this run and investigate; do not silently mix precision policies."
         )
 
 

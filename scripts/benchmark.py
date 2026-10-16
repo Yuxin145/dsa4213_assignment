@@ -1,4 +1,4 @@
-"""All inference benchmarks in one session (§6.4): GPU + CPU throughput and generation latency.
+"""All inference benchmarks in one session: GPU + CPU throughput and generation latency.
   python scripts/benchmark.py [--smoke] [--device cuda]
 """
 import argparse

@@ -1,4 +1,4 @@
-"""Part II embedding tables: own Word2Vec (skip-gram) and public GloVe 6B-100d, aligned to our vocab (§7).
+"""Part II embedding tables: own Word2Vec (skip-gram) and public GloVe 6B-100d, aligned to our vocab.
 
 Missing words: <pad> = 0; <unk> (if missing) = mean of covered vectors; other missing words ~ N(0, sigma^2)
 with sigma = std of all covered vector entries, drawn from a fixed seed so the frozen table is identical

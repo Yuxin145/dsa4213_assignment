@@ -7,3 +7,17 @@ results/**/*.pt
 results/**/*.pt.tmp
 results/part2/embeddings/word2vec.kv*
 logs/
+
+# personal / process files (kept locally, not part of the code submission)
+CLAUDE.md
+DECISIONS.md
+VERIFICATION.md
+AUDIT_REPORT.md
+REQUIREMENTS_CHECKLIST.md
+AI_USE.md
+Assignment1_2026.pdf
+report/
+report_bundle.zip
+results/profile/
+results/profile_run1/
+results/budget_check.json

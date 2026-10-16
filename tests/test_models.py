@@ -56,7 +56,7 @@ def test_overfit_one_batch(cfg, smoke_data, arch):
     """Real V, AMP on CUDA (as in training), AdamW(wd 0.01) + clip 1.0: eval loss on one small fixed batch
     (4 x 32 tokens) < 0.5 within 300 steps. Identical settings for all models: dropout disabled (a capacity /
     optimisation check, not a regularisation check) and lr 1e-2 -- the stacked 2-layer LSTM with small default
-    init memorises much more slowly than the RNN/Transformer (see DECISIONS.md)."""
+    init memorises much more slowly than the RNN/Transformer."""
     import copy
 
     V = len(smoke_data["vocab"])

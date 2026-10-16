@@ -1,4 +1,4 @@
-"""RULE §6.3 learning-rate sweep (writes configs/lr_selected.yaml; smoke -> results_smoke/lr_sweep/selected.json).
+"""RULE learning-rate sweep (writes configs/lr_selected.yaml; smoke -> results_smoke/lr_sweep/selected.json).
   python scripts/lr_sweep.py [--smoke] [--archs rnn lstm transformer]
 """
 import argparse

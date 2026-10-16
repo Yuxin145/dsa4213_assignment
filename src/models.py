@@ -1,4 +1,4 @@
-"""RNN / LSTM / Transformer language models with the shared interface (§6.2).
+"""RNN / LSTM / Transformer language models with the shared interface.
 
 forward(tokens[B,T]) -> logits[B,T,V];  encode(tokens[B,T]) -> hidden[B,T,256] (last layer, no dropout
 in eval mode). Construction order is core -> output layer -> embedding so that, for a given seed, the

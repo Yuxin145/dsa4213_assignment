@@ -1,4 +1,4 @@
-"""Part III: AG News topic classification from frozen LM representations (§8)."""
+"""Part III: AG News topic classification from frozen LM representations."""
 from __future__ import annotations
 
 import html

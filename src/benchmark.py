@@ -1,4 +1,4 @@
-"""Inference cost protocol (§6.4).
+"""Inference cost protocol.
 
 Common workload: score every target token of the chunked test split (log-probability of each target),
 batch of 32 chunks; the first `warmup` batches are excluded from timing; tokens/sec is the number of
